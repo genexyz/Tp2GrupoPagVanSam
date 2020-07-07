@@ -102,7 +102,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("Select * from usuarios where id_usuario @id", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("Select * from usuarios where id_usuario = @id", sqlConn);
                 cmdUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 if (drUsuarios.Read())
@@ -175,23 +175,23 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand(
+                SqlCommand cmdUpdate = new SqlCommand(
                 "UPDATE usuarios SET nombre_usuario = @nombre_usuario, clave = @clave, " +
                 "habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email " +
                 "WHERE id_usuario=@id", sqlConn);
-                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
-                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
-                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
-                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
-                cmdSave.ExecuteNonQuery();
+                cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
+                cmdUpdate.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
+                cmdUpdate.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdUpdate.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
+                cmdUpdate.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
+                cmdUpdate.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
+                cmdUpdate.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
+                cmdUpdate.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada =
-                    new Exception("Error al modificat datos de usuario", Ex);
+                    new Exception("Error al modificar datos de usuario", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -205,18 +205,17 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand(
+                SqlCommand cmdInsert = new SqlCommand(
                 "insert into usuarios(nombre_usuario,clave,habilitado,nombre,apellido,email) " +
-                "values(@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email" +
-                "select @@identity", //para recuperar el ID que asigno el sql automaticamente
-                sqlConn);
-                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
-                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
-                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
-                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
-                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                "values(@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email) " +
+                "select @@identity", sqlConn);//para recuperar el ID que asigno el sql automaticamente
+                cmdInsert.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
+                cmdInsert.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdInsert.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
+                cmdInsert.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
+                cmdInsert.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
+                cmdInsert.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
+                usuario.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
                 //Asi se obtiene el ID que asignó al BD automaticamente
             }
             catch (Exception Ex)
