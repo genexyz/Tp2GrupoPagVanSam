@@ -7,12 +7,11 @@ namespace Business.Entities
 {
     public class Especialidad : BusinessEntity
     {
+        private string descripcion;
         public string Descripcion
         {
-            get => default;
-            set
-            {
-            }
+            get { return descripcion; }
+            set { descripcion = value; }
         }
     }
 }
