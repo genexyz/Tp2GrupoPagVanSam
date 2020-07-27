@@ -9,49 +9,47 @@ namespace Business.Logic
 {
     public class AlumnoInscripcionLogic : BusinessLogic
     {
-        private AlumnoInscripcionAdapter _InscripcionData;
+        private AlumnoInscripcionAdapter alumnoInscripcionData;
 
         public AlumnoInscripcionLogic()
         {
-            _InscripcionData = new AlumnoInscripcionAdapter();
+            alumnoInscripcionData = new AlumnoInscripcionAdapter();
         }
 
         public AlumnoInscripcionAdapter InscripcionData
         {
-            get
-            {
-                return _InscripcionData;
-            }
+            get { return alumnoInscripcionData; }
+            set { alumnoInscripcionData = value; }
         }
 
         public AlumnoInscripcion GetOne(int ID)
         {
-            return _InscripcionData.GetOne(ID);
+            return alumnoInscripcionData.GetOne(ID);
         }
 
-        public bool Existe(int id_alu, int id_cur)
+        public bool ExisteInscripcion(int idAlu, int idCur)
         {
-            return _InscripcionData.Existe(id_alu, id_cur);
+            return alumnoInscripcionData.ExisteInscripcion(idAlu, idCur);
         }
 
         public List<AlumnoInscripcion> GetAll(int IDAlumno)
         {
-            return _InscripcionData.GetAll(IDAlumno);
+            return alumnoInscripcionData.GetAll(IDAlumno);
         }
 
         public List<AlumnoInscripcion> GetAll()
         {
-            return _InscripcionData.GetAll();
+            return alumnoInscripcionData.GetAll();
         }
 
-        public void Save(AlumnoInscripcion ins)
+        public void Save(AlumnoInscripcion inscripcion)
         {
-            _InscripcionData.Save(ins);
+            alumnoInscripcionData.Save(inscripcion);
         }
 
         public void Delete(int ID)
         {
-            _InscripcionData.Delete(ID);
+            alumnoInscripcionData.Delete(ID);
         }
     }
 }

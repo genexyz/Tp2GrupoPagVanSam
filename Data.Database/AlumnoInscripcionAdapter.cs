@@ -16,9 +16,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("GetAll_AlumnosInscripciones", SqlConn);
-                cmdGetAll.CommandType = CommandType.StoredProcedure;
-                SqlDataReader drInscripciones = cmdGetAll.ExecuteReader();
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones", sqlConn);
+                SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
+
                 while (drInscripciones.Read())
                 {
                     AlumnoInscripcion ins = new AlumnoInscripcion();
@@ -52,9 +52,10 @@ namespace Data.Database
                 }
                 drInscripciones.Close();
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de las inscripciones.", e);
+                Exception ExcepcionManejada =
+                    new Exception("Error al recuperar datos de las inscripciones de alumnos", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -70,10 +71,10 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetAll = new SqlCommand("GetAllPorAlumno_AlumnosInscripciones", SqlConn);
-                cmdGetAll.Parameters.Add("@id_pers", SqlDbType.Int).Value = IDAlumno;
-                cmdGetAll.CommandType = CommandType.StoredProcedure;
-                SqlDataReader drInscripciones = cmdGetAll.ExecuteReader();
+
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@IDAlumno", sqlConn);
+                cmdInscripciones.Parameters.Add("@IDAlumno", SqlDbType.Int).Value = IDAlumno;
+                SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
                 while (drInscripciones.Read())
                 {
                     AlumnoInscripcion ins = new AlumnoInscripcion();
@@ -109,9 +110,10 @@ namespace Data.Database
                 }
                 drInscripciones.Close();
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de las inscripciones.", e);
+                Exception ExcepcionManejada =
+                    new Exception("Error al recuperar datos de las inscripciones del alumno", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -127,10 +129,10 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("GetOne_AlumnosInscripciones", SqlConn);
-                cmdGetOne.CommandType = CommandType.StoredProcedure;
-                cmdGetOne.Parameters.Add("@id", SqlDbType.Int).Value = ID;
-                SqlDataReader drInscripciones = cmdGetOne.ExecuteReader();
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones where id_inscripcion=@id", sqlConn);
+                cmdInscripciones.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
+
                 if (drInscripciones.Read())
                 {
                     ins.ID = (int)drInscripciones["id_inscripcion"];
@@ -161,9 +163,10 @@ namespace Data.Database
 
                 drInscripciones.Close();
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de la inscripcion.", e);
+                Exception ExcepcionManejada =
+                    new Exception("Error al recuperar datos de la inscripcion del alumno", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -173,28 +176,28 @@ namespace Data.Database
             return ins;
         }
 
-        public bool Existe(int id_alu, int id_cur)
+        public bool ExisteInscripcion(int idAlu, int idCur)
         {
-            bool existe;
+            bool existeInscripcion;
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetOne = new SqlCommand("Existe_Alumnos_Inscripciones", SqlConn);
-                cmdGetOne.CommandType = CommandType.StoredProcedure;
-                cmdGetOne.Parameters.Add("@id_alu", SqlDbType.Int).Value = id_alu;
-                cmdGetOne.Parameters.Add("@id_cur", SqlDbType.Int).Value = id_cur;
-                existe = Convert.ToBoolean(cmdGetOne.ExecuteScalar());
+                SqlCommand cmdExisteInscripcion = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@idAlu and id_curso=@idCur", sqlConn);
+                cmdExisteInscripcion.Parameters.Add("@idAlu", SqlDbType.Int).Value = idAlu;
+                cmdExisteInscripcion.Parameters.Add("@idCur", SqlDbType.Int).Value = idCur;
+                existeInscripcion = Convert.ToBoolean(cmdExisteInscripcion.ExecuteScalar());
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al validar que no exista esta Inscripcion", e);
+                Exception ExcepcionManejada =
+                    new Exception("Error al validar la existencia de la Inscripcion", Ex);
                 throw ExcepcionManejada;
             }
             finally
             {
                 this.CloseConnection();
             }
-            return existe;
+            return existeInscripcion;
         }
 
         public void Delete(int ID)
@@ -202,14 +205,14 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("Delete_AlumnosInscripciones", SqlConn);
-                cmdDelete.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmdDelete = new SqlCommand("delete alumnos_inscripciones where id_inscripcion=@id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar la inscripcion.", e);
+                Exception ExcepcionManejada =
+                    new Exception("Error al eliminar la inscripcion del alumno", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -218,24 +221,24 @@ namespace Data.Database
             }
         }
 
-        protected void Update(AlumnoInscripcion ins)
+        protected void Update(AlumnoInscripcion inscripcion)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUpdate = new SqlCommand("Update_AlumnosInscripciones", SqlConn);
-                cmdUpdate.CommandType = CommandType.StoredProcedure;
-
-                cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = ins.ID;
-                cmdUpdate.Parameters.Add("@id_alumno", SqlDbType.Int).Value = ins.Alumno.ID;
-                cmdUpdate.Parameters.Add("@id_curso", SqlDbType.Int).Value = ins.Curso.ID;
-                cmdUpdate.Parameters.Add("@condicion", SqlDbType.VarChar).Value = ins.Condicion;
-                cmdUpdate.Parameters.Add("@nota", SqlDbType.Int).Value = ins.Nota;
+                SqlCommand cmdUpdate = new SqlCommand("UPDATE alumnos_inscripciones SET condicion=@condicion, nota=@nota "
+                   + "WHERE id_inscripcion=@id and id_alumno=@idAlumno and id_curso=@idCurso", sqlConn);
+                cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = inscripcion.ID;
+                cmdUpdate.Parameters.Add("@idAlumno", SqlDbType.Int).Value = inscripcion.Alumno.ID;
+                cmdUpdate.Parameters.Add("@idCurso", SqlDbType.Int).Value = inscripcion.Curso.ID;
+                cmdUpdate.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
+                cmdUpdate.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
                 cmdUpdate.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al modificar datos de la inscripcion.", e);
+                Exception ExcepcionManejada =
+                    new Exception("Error al modificar datos de la inscripcion del alumno", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -244,23 +247,26 @@ namespace Data.Database
             }
         }
 
-        protected void Insert(AlumnoInscripcion ins)
+        protected void Insert(AlumnoInscripcion inscripcion)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInsert = new SqlCommand("Insert_AlumnosInscripciones", SqlConn);
-                cmdInsert.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmdInsert = new SqlCommand(
+                "insert into alumnos_inscripciones(id_alumno,id_curso,condicion,nota) " +
+                "values(@idAlumno,@idCurso,@condicion,@nota) " +
+                "select @@identity", sqlConn);
 
-                cmdInsert.Parameters.Add("@id_alumno", SqlDbType.Int).Value = ins.Alumno.ID;
-                cmdInsert.Parameters.Add("@id_curso", SqlDbType.Int).Value = ins.Curso.ID;
-                cmdInsert.Parameters.Add("@condicion", SqlDbType.VarChar).Value = ins.Condicion;
-                cmdInsert.Parameters.Add("@nota", SqlDbType.Int).Value = ins.Nota;
-                ins.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
+                cmdInsert.Parameters.Add("@idAlumno", SqlDbType.Int).Value = inscripcion.Alumno.ID;
+                cmdInsert.Parameters.Add("@idCurso", SqlDbType.Int).Value = inscripcion.Curso.ID;
+                cmdInsert.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
+                cmdInsert.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
+                inscripcion.ID = Decimal.ToInt32((decimal)cmdInsert.ExecuteScalar());
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al crear una nueva inscripcion.", e);
+                Exception ExcepcionManejada =
+                    new Exception("Error al crear nueva inscripcion del alumno", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -269,21 +275,21 @@ namespace Data.Database
             }
         }
 
-        public void Save(AlumnoInscripcion ins)
+        public void Save(AlumnoInscripcion inscripcion)
         {
-            if (ins.State == BusinessEntity.States.Deleted)
+            if (inscripcion.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(ins.ID);
+                this.Delete(inscripcion.ID);
             }
-            else if (ins.State == BusinessEntity.States.New)
+            else if (inscripcion.State == BusinessEntity.States.New)
             {
-                this.Insert(ins);
+                this.Insert(inscripcion);
             }
-            else if (ins.State == BusinessEntity.States.Modified)
+            else if (inscripcion.State == BusinessEntity.States.Modified)
             {
-                this.Update(ins);
+                this.Update(inscripcion);
             }
-            ins.State = BusinessEntity.States.Unmodified;
+            inscripcion.State = BusinessEntity.States.Unmodified;
         }
 
     }
