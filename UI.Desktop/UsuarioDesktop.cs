@@ -79,10 +79,10 @@ namespace UI.Desktop
             {
                 if (Modo == ModoForm.Modificacion) { this.UsuarioActual.ID = int.Parse(this.txtID.Text); }
                 this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                this.UsuarioActual.Nombre = this.txtNombre.Text;
-                this.UsuarioActual.Apellido = this.txtApellido.Text;
+                this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
+                this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
-                this.UsuarioActual.Email = this.txtEmail.Text;
+                this.UsuarioActual.Persona.Email = this.txtEmail.Text;
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
             }
             switch (Modo)

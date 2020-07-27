@@ -62,8 +62,8 @@ namespace UI.Desktop
             if (rta == DialogResult.Yes)
             {
                 int ID = ((Business.Entities.Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
-                EspecialidadLogic especialidad = new EspecialidadLogic();
-                especialidad.Delete(ID);
+                EspecialidadDesktop EspeDesktop = new EspecialidadDesktop(ID, ApplicationForm.ModoForm.Baja);
+                EspeDesktop.ShowDialog();
                 this.Listar();
             }
         }
