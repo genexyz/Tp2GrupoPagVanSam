@@ -13,7 +13,7 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class Usuarios : Form
+    public partial class Usuarios : ApplicationForm
     {
         public Usuarios()
         {
@@ -62,12 +62,24 @@ namespace UI.Desktop
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            if (this.dgvUsuarios.SelectedRows.Count > 0)
+
+            var rta = MessageBox.Show("¿Esta seguro que desea eliminar el Usuario seleccionado?", "Atencion", MessageBoxButtons.YesNo);
+            if (rta == DialogResult.Yes)
             {
-                int ID = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
-                UsuarioDesktop formUsuario = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Baja);
-                formUsuario.ShowDialog();
-                this.Listar();
+                try
+                {
+                    if (this.dgvUsuarios.SelectedRows.Count > 0)
+                    {
+                        int ID = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
+                        UsuarioLogic usuarioLogic = new UsuarioLogic();
+                        usuarioLogic.Delete(ID);
+                        this.Listar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

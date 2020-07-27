@@ -74,9 +74,10 @@ namespace UI.Desktop
                 {
                     if (this.dgvPlanes.SelectedRows.Count > 0)
                     {
-                        int ID = ((Business.Entities.Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
-                        PlanDesktop PlanDesktop = new PlanDesktop(ID, ApplicationForm.ModoForm.Baja);
-                        PlanDesktop.ShowDialog();
+
+                        int ID = ((Comision)this.dgvPlanes.SelectedRows[0].DataBoundItem).ID;
+                        PlanLogic planLogic = new PlanLogic();
+                        planLogic.Delete(ID);
                         this.Listar();
                     }
                 }

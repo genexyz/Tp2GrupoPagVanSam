@@ -240,7 +240,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripContainer tcUsuarios;
         private System.Windows.Forms.TableLayoutPanel tlUsuarios;
         private System.Windows.Forms.DataGridView dgvUsuarios;

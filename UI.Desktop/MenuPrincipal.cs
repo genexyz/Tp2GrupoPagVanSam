@@ -45,5 +45,11 @@ namespace UI.Desktop
         {
 
         }
+
+        private void btnComisiones_Click(object sender, EventArgs e)
+        {
+            Comisiones comisiones = new Comisiones();
+            comisiones.ShowDialog();
+        }
     }
 }

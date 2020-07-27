@@ -38,7 +38,7 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-        public virtual void MapearDeDatos()
+        public override void MapearDeDatos()
         {
             this.txtID.Text = this.UsuarioActual.ID.ToString();
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
@@ -68,7 +68,7 @@ namespace UI.Desktop
 
 
         }
-        public virtual void MapearADatos() 
+        public override void MapearADatos() 
         {
             if (Modo == ModoForm.Alta)
             {
@@ -102,13 +102,13 @@ namespace UI.Desktop
             }
 
         }
-        public virtual void GuardarCambios() 
+        public override void GuardarCambios() 
         {
             MapearADatos();
             var usuariologic = new UsuarioLogic();
             usuariologic.Save(UsuarioActual);
         }
-        public virtual bool Validar()
+        public override bool Validar()
         {
             bool valido = true;
             if (

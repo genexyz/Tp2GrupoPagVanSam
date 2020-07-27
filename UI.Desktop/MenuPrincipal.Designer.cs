@@ -36,6 +36,8 @@
             this.lblEspecialidades = new System.Windows.Forms.Label();
             this.btnEspecialidades = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnComisiones = new System.Windows.Forms.Button();
+            this.lblComisiones = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -122,6 +124,30 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnComisiones
+            // 
+            this.btnComisiones.BackColor = System.Drawing.Color.White;
+            this.btnComisiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComisiones.Location = new System.Drawing.Point(393, 167);
+            this.btnComisiones.Name = "btnComisiones";
+            this.btnComisiones.Size = new System.Drawing.Size(126, 43);
+            this.btnComisiones.TabIndex = 25;
+            this.btnComisiones.Text = "Ingresar";
+            this.btnComisiones.UseVisualStyleBackColor = false;
+            this.btnComisiones.Click += new System.EventHandler(this.btnComisiones_Click);
+            // 
+            // lblComisiones
+            // 
+            this.lblComisiones.AutoSize = true;
+            this.lblComisiones.BackColor = System.Drawing.Color.Transparent;
+            this.lblComisiones.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComisiones.ForeColor = System.Drawing.Color.White;
+            this.lblComisiones.Location = new System.Drawing.Point(388, 138);
+            this.lblComisiones.Name = "lblComisiones";
+            this.lblComisiones.Size = new System.Drawing.Size(190, 26);
+            this.lblComisiones.TabIndex = 26;
+            this.lblComisiones.Text = "ABM Comisiones";
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +155,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(602, 430);
+            this.Controls.Add(this.lblComisiones);
+            this.Controls.Add(this.btnComisiones);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEspecialidades);
             this.Controls.Add(this.lblEspecialidades);
@@ -155,5 +183,7 @@
         private System.Windows.Forms.Label lblEspecialidades;
         private System.Windows.Forms.Button btnEspecialidades;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnComisiones;
+        private System.Windows.Forms.Label lblComisiones;
     }
 }
