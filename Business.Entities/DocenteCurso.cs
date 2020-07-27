@@ -7,28 +7,42 @@ namespace Business.Entities
 {
     public class DocenteCurso : BusinessEntity
     {
-        /* public TiposCargos Cargo
-        {
-            get => default;
-            set
-            {
-            }
-        } "No sabemos donde deberia estar este tipo de datos" */
+        private string cargo;
+        private Persona docente;
+        private Curso curso;
 
-        public int IDCurso
+        public DocenteCurso()
         {
-            get => default;
-            set
-            {
-            }
+            this.docente = new Persona();
+            this.curso = new Curso();
         }
 
-        public int IDDocente
+        public string Cargo
         {
-            get => default;
-            set
-            {
-            }
+            get { return cargo; }
+            set { cargo = value; }
+        }
+
+        public Persona Docente
+        {
+            get { return docente; }
+            set { docente = value; }
+        }
+
+        public Curso Curso
+        {
+            get { return curso; }
+            set { curso = value; }
+        }
+
+        public string ApellidoDocente
+        {
+            get { return this.Docente.Apellido; }
+        }
+
+        public string NombreDocente
+        {
+            get { return this.Docente.Nombre; }
         }
     }
 }

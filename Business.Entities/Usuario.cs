@@ -11,10 +11,15 @@ namespace Business.Entities
 
         private string nombreUsuario;
         private string clave;
-        private string nombre;
-        private string apellido;
-        private string email;
         private bool habilitado;
+        private Persona persona;
+        private List<ModuloUsuario> modulosUsuarios;
+
+        public Usuario()
+        {
+            this.persona = new Persona();
+            this.modulosUsuarios = new List<ModuloUsuario>();
+        }
 
         public string NombreUsuario
         {
@@ -26,25 +31,43 @@ namespace Business.Entities
             get { return clave; }
             set { clave = value; }
         }
-        public string Nombre
-        {
-            get { return nombre; }
-            set { nombre = value; }
-        }
-        public string Apellido
-        {
-            get { return apellido; }
-            set { apellido = value; }
-        }
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
+
         public bool Habilitado
         {
             get { return habilitado; }
             set { habilitado = value; }
+        }
+
+        public Persona Persona
+        {
+            get { return persona; }
+            set { persona = value; }
+        }
+
+        public List<ModuloUsuario> ModulosUsuarios
+        {
+            get { return this.modulosUsuarios; }
+            set { this.modulosUsuarios = value; }
+        }
+
+        public string Nombre
+        {
+            get { return this.Persona.Nombre; }
+        }
+
+        public string Apellido
+        {
+            get { return this.Persona.Apellido; }
+        }
+
+        public string Email
+        {
+            get { return this.Persona.Email; }
+        }
+
+        public string TipoPersona
+        {
+            get { return this.Persona.TipoPersona; }
         }
 
 

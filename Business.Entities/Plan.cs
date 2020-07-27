@@ -7,20 +7,28 @@ namespace Business.Entities
 {
     public class Plan : BusinessEntity
     {
-        public string Descripcion
+        private string descripcion;
+        private Especialidad especialidad;
+
+        public Plan()
         {
-            get => default;
-            set
-            {
-            }
+            this.Especialidad = new Especialidad();
         }
 
-        public int IDEspecialidad
+        public string Descripcion
         {
-            get => default;
-            set
-            {
-            }
+            get { return descripcion; }
+            set { descripcion = value; }
+        }
+
+        public Especialidad Especialidad
+        {
+            get { return especialidad; }
+            set { especialidad = value; }
+        }
+        public string DescEspecialidad
+        {
+            get { return this.Especialidad.Descripcion; }
         }
     }
 }

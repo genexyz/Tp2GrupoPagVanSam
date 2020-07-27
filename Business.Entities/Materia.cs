@@ -7,36 +7,48 @@ namespace Business.Entities
 {
     public class Materia : BusinessEntity
     {
+        private string descripcion;
+        private int hSSemanales;
+        private int hSTotales;
+        private Plan plan;
+
+        public Materia()
+        {
+            this.plan = new Plan();
+        }
+
         public string Descripcion
         {
-            get => default;
-            set
-            {
-            }
+            get { return descripcion; }
+            set { descripcion = value; }
         }
 
         public int HSSemanales
         {
-            get => default;
-            set
-            {
-            }
+            get { return hSSemanales; }
+            set { hSSemanales = value; }
         }
 
         public int HSTotales
         {
-            get => default;
-            set
-            {
-            }
+            get { return hSTotales; }
+            set { hSTotales = value; }
         }
 
-        public int IDPlan
+        public Plan Plan
         {
-            get => default;
-            set
-            {
-            }
+            get { return plan; }
+            set { plan = value; }
+        }
+
+        public string DescPlan
+        {
+            get { return this.Plan.Descripcion; }
+        }
+
+        public string DescEspecialidad
+        {
+            get { return this.Plan.Especialidad.Descripcion; }
         }
     }
 }

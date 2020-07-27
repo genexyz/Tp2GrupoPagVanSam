@@ -5,78 +5,85 @@ using System.Text;
 
 namespace Business.Entities
 {
-    public class Personas : BusinessEntity
+    public class Persona : BusinessEntity
     {
+        private string apellido;
+        private string direccion;
+        private string email;
+        private DateTime fechaNacimiento;
+        private int legajo;
+        private string nombre;
+        private string telefono;
+        private string tipoPersona;
+        private Plan plan;
+
+        public Persona()
+        {
+            this.Plan = new Plan();
+        }
+
         public string Apellido
         {
-            get => default;
-            set
-            {
-            }
+            get { return apellido; }
+            set { apellido = value; }
         }
 
         public string Direccion
         {
-            get => default;
-            set
-            {
-            }
+            get { return direccion; }
+            set { direccion = value; }
         }
 
         public string Email
         {
-            get => default;
-            set
-            {
-            }
+            get { return email; }
+            set { email = value; }
         }
 
         public DateTime FechaNacimiento
         {
-            get => default;
-            set
-            {
-            }
+            get { return fechaNacimiento; }
+            set { fechaNacimiento = value; }
         }
 
-        public int IDPlan
+        public Plan Plan
         {
-            get => default;
-            set
-            {
-            }
+            get { return plan; }
+            set { plan = value; }
         }
 
         public int Legajo
         {
-            get => default;
-            set
-            {
-            }
+            get { return legajo; }
+            set { legajo = value; }
         }
 
         public string Nombre
         {
-            get => default;
-            set
-            {
-            }
+            get { return nombre; }
+            set { nombre = value; }
         }
 
-        /* public TiposPersonas Telefono
+        public string Telefono
         {
-            get => default;
-            set
-            {
-            }
-        } "No sabemos donde esta este tipo de datos" */
+            get { return telefono; }
+            set { telefono = value; }
+        }
 
         public string TipoPersona
         {
-            get => default;
-            set
-            {
-            }
+            get { return tipoPersona; }
+            set { tipoPersona = value; }
+        }
+
+        public string DescPlan
+        {
+            get { return plan.Descripcion; }
+        }
+
+        public string DescEspecialidad
+        {
+            get { return plan.DescEspecialidad; }
         }
     }
 }
