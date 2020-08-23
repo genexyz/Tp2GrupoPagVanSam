@@ -38,6 +38,8 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnComisiones = new System.Windows.Forms.Button();
             this.lblComisiones = new System.Windows.Forms.Label();
+            this.lblMaterias = new System.Windows.Forms.Label();
+            this.btnMaterias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -148,6 +150,30 @@
             this.lblComisiones.TabIndex = 26;
             this.lblComisiones.Text = "ABM Comisiones";
             // 
+            // lblMaterias
+            // 
+            this.lblMaterias.AutoSize = true;
+            this.lblMaterias.BackColor = System.Drawing.Color.Transparent;
+            this.lblMaterias.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaterias.ForeColor = System.Drawing.Color.White;
+            this.lblMaterias.Location = new System.Drawing.Point(21, 257);
+            this.lblMaterias.Name = "lblMaterias";
+            this.lblMaterias.Size = new System.Drawing.Size(167, 26);
+            this.lblMaterias.TabIndex = 27;
+            this.lblMaterias.Text = "ABM Materias";
+            // 
+            // btnMaterias
+            // 
+            this.btnMaterias.BackColor = System.Drawing.Color.White;
+            this.btnMaterias.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaterias.Location = new System.Drawing.Point(26, 296);
+            this.btnMaterias.Name = "btnMaterias";
+            this.btnMaterias.Size = new System.Drawing.Size(126, 43);
+            this.btnMaterias.TabIndex = 28;
+            this.btnMaterias.Text = "Ingresar";
+            this.btnMaterias.UseVisualStyleBackColor = false;
+            this.btnMaterias.Click += new System.EventHandler(this.btnMaterias_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +181,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(602, 430);
+            this.Controls.Add(this.btnMaterias);
+            this.Controls.Add(this.lblMaterias);
             this.Controls.Add(this.lblComisiones);
             this.Controls.Add(this.btnComisiones);
             this.Controls.Add(this.btnSalir);
@@ -185,5 +213,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnComisiones;
         private System.Windows.Forms.Label lblComisiones;
+        private System.Windows.Forms.Label lblMaterias;
+        private System.Windows.Forms.Button btnMaterias;
     }
 }

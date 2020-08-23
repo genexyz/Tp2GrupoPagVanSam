@@ -148,7 +148,6 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdUpdate = new SqlCommand("UPDATE comisiones SET desc_comision=@desc, anio_especialidad=@anio WHERE "
                     +"id_comision=@id and id_plan=@idPlan", sqlConn);
-                cmdUpdate.CommandType = CommandType.StoredProcedure;
 
                 cmdUpdate.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
                 cmdUpdate.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = comision.Descripcion;
