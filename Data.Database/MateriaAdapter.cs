@@ -100,7 +100,7 @@ namespace Data.Database
             return mat;
         }
 
-        public bool ExisteMateria(int id_plan, string desc)
+        public bool ExisteMateria(int idPlan, string desc)
         {
             bool existeMate;
             try
@@ -109,7 +109,7 @@ namespace Data.Database
                 SqlCommand cmdExisteMate = new SqlCommand("select * from materias where "
                     + "id_plan=@idPlan and desc_materia=@desc", sqlConn);
                 cmdExisteMate.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
-                cmdExisteMate.Parameters.Add("@idPlan", SqlDbType.Int).Value = id_plan;
+                cmdExisteMate.Parameters.Add("@idPlan", SqlDbType.Int).Value = idPlan;
                 existeMate = Convert.ToBoolean(cmdExisteMate.ExecuteScalar());
             }
             catch (Exception Ex)

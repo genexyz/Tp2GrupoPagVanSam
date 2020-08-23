@@ -57,5 +57,11 @@ namespace UI.Desktop
             Materias materias = new Materias();
             materias.ShowDialog();
         }
+
+        private void ctnCursos_Click(object sender, EventArgs e)
+        {
+            Cursos curso = new Cursos();
+            curso.ShowDialog();
+        }
     }
 }

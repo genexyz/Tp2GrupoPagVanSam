@@ -27,9 +27,9 @@ namespace Business.Logic
             return MateriaData.GetOne(ID);
         }
 
-        public bool Existe(int id_plan, string desc)
+        public bool Existe(int idPlan, string desc)
         {
-            return MateriaData.ExisteMateria(id_plan, desc);
+            return MateriaData.ExisteMateria(idPlan, desc);
         }
 
         public List<Materia> GetAll()

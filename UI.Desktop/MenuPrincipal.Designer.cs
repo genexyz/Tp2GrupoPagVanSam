@@ -40,6 +40,8 @@
             this.lblComisiones = new System.Windows.Forms.Label();
             this.lblMaterias = new System.Windows.Forms.Label();
             this.btnMaterias = new System.Windows.Forms.Button();
+            this.ctnCursos = new System.Windows.Forms.Button();
+            this.lblCursos = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -174,6 +176,30 @@
             this.btnMaterias.UseVisualStyleBackColor = false;
             this.btnMaterias.Click += new System.EventHandler(this.btnMaterias_Click);
             // 
+            // ctnCursos
+            // 
+            this.ctnCursos.BackColor = System.Drawing.Color.White;
+            this.ctnCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctnCursos.Location = new System.Drawing.Point(393, 296);
+            this.ctnCursos.Name = "ctnCursos";
+            this.ctnCursos.Size = new System.Drawing.Size(126, 43);
+            this.ctnCursos.TabIndex = 29;
+            this.ctnCursos.Text = "Ingresar";
+            this.ctnCursos.UseVisualStyleBackColor = false;
+            this.ctnCursos.Click += new System.EventHandler(this.ctnCursos_Click);
+            // 
+            // lblCursos
+            // 
+            this.lblCursos.AutoSize = true;
+            this.lblCursos.BackColor = System.Drawing.Color.Transparent;
+            this.lblCursos.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCursos.ForeColor = System.Drawing.Color.White;
+            this.lblCursos.Location = new System.Drawing.Point(388, 257);
+            this.lblCursos.Name = "lblCursos";
+            this.lblCursos.Size = new System.Drawing.Size(145, 26);
+            this.lblCursos.TabIndex = 30;
+            this.lblCursos.Text = "ABM Cursos";
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,6 +207,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(602, 430);
+            this.Controls.Add(this.lblCursos);
+            this.Controls.Add(this.ctnCursos);
             this.Controls.Add(this.btnMaterias);
             this.Controls.Add(this.lblMaterias);
             this.Controls.Add(this.lblComisiones);
@@ -215,5 +243,7 @@
         private System.Windows.Forms.Label lblComisiones;
         private System.Windows.Forms.Label lblMaterias;
         private System.Windows.Forms.Button btnMaterias;
+        private System.Windows.Forms.Button ctnCursos;
+        private System.Windows.Forms.Label lblCursos;
     }
 }
