@@ -89,7 +89,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdDocentesPlan = new SqlCommand("select * from personas pe INNER JOIN planes p on p.id_plan=pe.id_plan"
-                   + " INNER JOIN especialidades e on e.id_especialidad = p.id_especialidad WHERE id_plan=@id and tipo_persona='3'", sqlConn);
+                   + " INNER JOIN especialidades e on e.id_especialidad = p.id_especialidad WHERE p.id_plan=@id and tipo_persona='3'", sqlConn);
                 cmdDocentesPlan.Parameters.Add("@id", SqlDbType.Int).Value = idPlan;
                 SqlDataReader drPersonas = cmdDocentesPlan.ExecuteReader();
 

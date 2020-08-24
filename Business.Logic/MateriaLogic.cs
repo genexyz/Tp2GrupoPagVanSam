@@ -47,9 +47,9 @@ namespace Business.Logic
             MateriaData.Delete(ID);
         }
 
-        /*public List<Materia> GetMateriasParaInscripcion(int IDPlan, int IDAlumno)
+        public List<Materia> GetMateriasParaInscripcion(int IDPlan, int IDAlumno)
         {
             return MateriaData.GetMateriasParaInscripcion(IDPlan, IDAlumno);
-        }*/
+        }
     }
 }

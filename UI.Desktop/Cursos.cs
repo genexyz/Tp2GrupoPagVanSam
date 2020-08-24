@@ -82,11 +82,11 @@ namespace UI.Desktop
             }
         }
 
-        /*private void tsbDocentes_Click(object sender, EventArgs e)
+        private void tsbDocentes_Click(object sender, EventArgs e)
         {
             DocentesCursos dc = new DocentesCursos((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem);
             dc.ShowDialog();
-        }*/
+        }
 
     }
 }

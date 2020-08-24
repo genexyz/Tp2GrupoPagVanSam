@@ -176,7 +176,7 @@
             this.tsbDocentes});
             this.tsCursos.Location = new System.Drawing.Point(3, 0);
             this.tsCursos.Name = "tsCursos";
-            this.tsCursos.Size = new System.Drawing.Size(104, 25);
+            this.tsCursos.Size = new System.Drawing.Size(135, 25);
             this.tsCursos.TabIndex = 0;
             // 
             // tsbNuevo
@@ -211,14 +211,10 @@
             // 
             // tsbDocentes
             // 
-            /*this.tsbDocentes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDocentes.Image = ((System.Drawing.Image)(resources.GetObject("tsbDocentes.Image")));
-            this.tsbDocentes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDocentes.Image = global::UI.Desktop.Properties.Resources.Teachers;
             this.tsbDocentes.Name = "tsbDocentes";
             this.tsbDocentes.Size = new System.Drawing.Size(23, 22);
-            this.tsbDocentes.Text = "toolStripButton1";
-            this.tsbDocentes.ToolTipText = "Gestion de Docentes";
-            this.tsbDocentes.Click += new System.EventHandler(this.tsbDocentes_Click);*/
+            this.tsbDocentes.Click += new System.EventHandler(this.tsbDocentes_Click);
             // 
             // Cursos
             // 

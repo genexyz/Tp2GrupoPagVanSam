@@ -20,18 +20,18 @@ namespace UI.Desktop
 
         private void UsuarioDesktop_Load(object sender, EventArgs e)
         {
-            if (_UsuarioActual.Persona.TipoPersona == "No docente")
+            if (usuarioActual.Persona.TipoPersona == "No docente")
                 this.dgvPermisos.Visible = true;
             else
                 this.dgvPermisos.Visible = false;
         }
 
-        Usuario _UsuarioActual;
+        Usuario usuarioActual;
 
         public UsuarioDesktop(ModoForm modo) : this()
         {
             this.Modo = modo;
-            _UsuarioActual = new Usuario();
+            usuarioActual = new Usuario();
 
         }
 
@@ -41,8 +41,8 @@ namespace UI.Desktop
             UsuarioLogic UsuarioNegocio = new UsuarioLogic();
             try
             {
-                _UsuarioActual = UsuarioNegocio.GetOne(ID);
-                /*if (_UsuarioActual.Persona.TipoPersona == "No docente")
+                usuarioActual = UsuarioNegocio.GetOne(ID);
+                /*if (usuarioActual.Persona.TipoPersona == "No docente")
                 {
                     this.dgvPermisos.AutoGenerateColumns = false;
                     ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
@@ -58,18 +58,18 @@ namespace UI.Desktop
 
         public Usuario UsuarioActual
         {
-            get { return _UsuarioActual; }
-            set { _UsuarioActual = value; }
+            get { return usuarioActual; }
+            set { usuarioActual = value; }
         }
 
         public override void MapearDeDatos()
         {
-            this.txtID.Text = _UsuarioActual.ID.ToString();
-            this.txtUsuario.Text = _UsuarioActual.NombreUsuario;
-            this.txtClave.Text = _UsuarioActual.Clave;
-            this.txtConfirmarClave.Text = _UsuarioActual.Clave;
-            this.chkHabilitado.Checked = _UsuarioActual.Habilitado;
-            this.txtPersona.Text = _UsuarioActual.Apellido + " " + _UsuarioActual.Nombre;
+            this.txtID.Text = usuarioActual.ID.ToString();
+            this.txtUsuario.Text = usuarioActual.NombreUsuario;
+            this.txtClave.Text = usuarioActual.Clave;
+            this.txtConfirmarClave.Text = usuarioActual.Clave;
+            this.chkHabilitado.Checked = usuarioActual.Habilitado;
+            this.txtPersona.Text = usuarioActual.Apellido + " " + usuarioActual.Nombre;
 
             switch (this.Modo)
             {
@@ -90,28 +90,28 @@ namespace UI.Desktop
             switch (this.Modo)
             {
                 case ModoForm.Baja:
-                    _UsuarioActual.State = Usuario.States.Deleted;
+                    usuarioActual.State = Usuario.States.Deleted;
                     break;
                 case ModoForm.Consulta:
-                    _UsuarioActual.State = Usuario.States.Unmodified;
+                    usuarioActual.State = Usuario.States.Unmodified;
                     break;
                 case ModoForm.Alta:
-                    _UsuarioActual.State = Usuario.States.New;
+                    usuarioActual.State = Usuario.States.New;
                     break;
                 case ModoForm.Modificacion:
-                    _UsuarioActual.State = Usuario.States.Modified;
+                    usuarioActual.State = Usuario.States.Modified;
                     break;
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 if (Modo == ModoForm.Modificacion)
-                _UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
-                _UsuarioActual.NombreUsuario = this.txtUsuario.Text;
-                _UsuarioActual.Clave = this.txtClave.Text;
-                _UsuarioActual.Habilitado = this.chkHabilitado.Checked;
+                    usuarioActual.ID = Convert.ToInt32(this.txtID.Text);
+                usuarioActual.NombreUsuario = this.txtUsuario.Text;
+                usuarioActual.Clave = this.txtClave.Text;
+                usuarioActual.Habilitado = this.chkHabilitado.Checked;
                 /*foreach (DataGridViewRow row in this.dgvPermisos.Rows)
                 {
-                    _UsuarioActual.ModulosUsuarios.Add((ModuloUsuario)row.DataBoundItem);
+                    usuarioActual.ModulosUsuarios.Add((ModuloUsuario)row.DataBoundItem);
                 }*/
             }
 
@@ -123,8 +123,8 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 UsuarioLogic userlogic = new UsuarioLogic();
-                if (Modo != ModoForm.Alta || !userlogic.Existe(_UsuarioActual.NombreUsuario))
-                    userlogic.Save(_UsuarioActual);
+                if (Modo != ModoForm.Alta || !userlogic.Existe(usuarioActual.NombreUsuario))
+                    userlogic.Save(usuarioActual);
                 else this.Notificar("Ya existe un Usuario con ese Nombre de Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -156,7 +156,7 @@ namespace UI.Desktop
                 EsValido = false;
                 this.Notificar("La clave debe tener al menos 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (this._UsuarioActual.Persona.ID == 0)
+            if (this.usuarioActual.Persona.ID == 0)
             {
                 EsValido = false;
                 this.Notificar("No se le asignó una Persona al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -180,11 +180,11 @@ namespace UI.Desktop
 
         private void btnSeleccionarPersona_Click(object sender, EventArgs e)
         {
-            SeleccionarPersona select = new SeleccionarPersona(_UsuarioActual);
+            SeleccionarPersona select = new SeleccionarPersona(usuarioActual);
             select.ShowDialog();
-            this._UsuarioActual = select.UsuarioActual;
-            this.txtPersona.Text = _UsuarioActual.Apellido + " " + _UsuarioActual.Nombre;
-            /*if (_UsuarioActual.Persona.TipoPersona == "No docente")
+            this.usuarioActual = select.UsuarioActual;
+            this.txtPersona.Text = usuarioActual.Apellido + " " + usuarioActual.Nombre;
+            /*if (usuarioActual.Persona.TipoPersona == "No docente")
             {
                 try
                 {

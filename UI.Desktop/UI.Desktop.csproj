@@ -52,6 +52,30 @@
     <Compile Include="ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocenteCursosDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocenteCursosDesktop.Designer.cs">
+      <DependentUpon>DocenteCursosDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InscripcionDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InscripcionDesktop.Designer.cs">
+      <DependentUpon>InscripcionDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscripciones.Designer.cs">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +87,12 @@
     </Compile>
     <Compile Include="CursoDesktop.Designer.cs">
       <DependentUpon>CursoDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocentesCursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocentesCursos.Designer.cs">
+      <DependentUpon>DocentesCursos.cs</DependentUpon>
     </Compile>
     <Compile Include="Personas.cs">
       <SubType>Form</SubType>
@@ -130,6 +160,12 @@
     <Compile Include="EspecialidadesDesktop.Designer.cs">
       <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeleccionarDocentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionarDocentes.Designer.cs">
+      <DependentUpon>SeleccionarDocentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeleccionarPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,11 +186,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DocenteCursosDesktop.resx">
+      <DependentUpon>DocenteCursosDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InscripcionDesktop.resx">
+      <DependentUpon>InscripcionDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscripciones.resx">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PersonaDesktop.resx">
       <DependentUpon>PersonaDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CursoDesktop.resx">
       <DependentUpon>CursoDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocentesCursos.resx">
+      <DependentUpon>DocentesCursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Personas.resx">
       <DependentUpon>Personas.cs</DependentUpon>
@@ -188,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EspecialidadesDesktop.resx">
       <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeleccionarDocentes.resx">
+      <DependentUpon>SeleccionarDocentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionarPersona.resx">
       <DependentUpon>SeleccionarPersona.cs</DependentUpon>
@@ -244,6 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\background-textures.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Teachers.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

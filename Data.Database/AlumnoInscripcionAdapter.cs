@@ -5,6 +5,7 @@ using System.Text;
 using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
 
 namespace Data.Database
 {
@@ -16,7 +17,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones", sqlConn);
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones a INNER JOIN personas p on a.id_alumno=p.id_persona"
+                    + "INNER JOIN curso c on c.id_curso=a.id_curso INNER JOIN planes pl on pl.id_plan=p.id_plan", sqlConn);
                 SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
 
                 while (drInscripciones.Read())
@@ -25,29 +27,39 @@ namespace Data.Database
                     ins.ID = (int)drInscripciones["id_inscripcion"];
                     ins.Condicion = (string)drInscripciones["condicion"];
                     ins.Nota = (int)drInscripciones["nota"];
-                    ins.Alumno.ID = (int)drInscripciones["id_persona"];
-                    ins.Alumno.Nombre = (string)drInscripciones["nombre"];
-                    ins.Alumno.Apellido = (string)drInscripciones["apellido"];
-                    ins.Alumno.Email = (string)drInscripciones["email"];
-                    ins.Alumno.Direccion = (string)drInscripciones["direccion"];
-                    ins.Alumno.Telefono = (string)drInscripciones["telefono"];
-                    ins.Alumno.FechaNacimiento = (DateTime)drInscripciones["fecha_nac"];
-                    ins.Alumno.Legajo = (int)drInscripciones["legajo"];
+
+                    Persona per = new Persona();
+                    per.ID = (int)drInscripciones["id_persona"];
+                    per.Nombre = (string)drInscripciones["nombre"];
+                    per.Apellido = (string)drInscripciones["apellido"];
+                    per.Email = (string)drInscripciones["email"];
+                    per.Direccion = (string)drInscripciones["direccion"];
+                    per.Telefono = (string)drInscripciones["telefono"];
+                    per.FechaNacimiento = (DateTime)drInscripciones["fecha_nac"];
+                    per.Legajo = (int)drInscripciones["legajo"];
                     switch ((int)drInscripciones["tipo_persona"])
                     {
                         case 1:
-                            ins.Alumno.TipoPersona = "No docente";
+                            per.TipoPersona = "No docente";
                             break;
                         case 2:
-                            ins.Alumno.TipoPersona = "Alumno";
+                            per.TipoPersona = "Alumno";
                             break;
                         case 3:
-                            ins.Alumno.TipoPersona = "Docente";
+                            per.TipoPersona = "Docente";
                             break;
                     }
-                    ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
-                    ins.Curso.ID = (int)drInscripciones["id_curso"];
-                    ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
+                    Plan pla = new Plan();
+                    pla.ID = (int)drInscripciones["id_plan"];
+                    per.Plan = pla;
+
+                    Curso cur = new Curso();
+                    cur.ID = (int)drInscripciones["id_curso"];
+                    cur.AnioCalendario = (int)drInscripciones["anio_calendario"];
+
+                    ins.Alumno = per;
+                    ins.Curso = cur;
+
                     inscripciones.Add(ins);
                 }
                 drInscripciones.Close();
@@ -72,7 +84,10 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@IDAlumno", sqlConn);
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones a INNER JOIN personas p on a.id_alumno=p.id_persona"
+                    + "INNER JOIN curso c on c.id_curso=a.id_curso INNER JOIN planes pl on pl.id_plan=p.id_plan " +
+                    "INNER JOIN materias m on m.id_materia=c.id_materia INNER JOIN comisiones co on co.id_comision=c.id_comision" +
+                    " where id_alumno=@IDAlumno", sqlConn);
                 cmdInscripciones.Parameters.Add("@IDAlumno", SqlDbType.Int).Value = IDAlumno;
                 SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
                 while (drInscripciones.Read())
@@ -81,31 +96,45 @@ namespace Data.Database
                     ins.ID = (int)drInscripciones["id_inscripcion"];
                     ins.Condicion = (string)drInscripciones["condicion"];
                     ins.Nota = (int)drInscripciones["nota"];
-                    ins.Alumno.ID = (int)drInscripciones["id_persona"];
-                    ins.Alumno.Nombre = (string)drInscripciones["nombre"];
-                    ins.Alumno.Apellido = (string)drInscripciones["apellido"];
-                    ins.Alumno.Email = (string)drInscripciones["email"];
-                    ins.Alumno.Direccion = (string)drInscripciones["direccion"];
-                    ins.Alumno.Telefono = (string)drInscripciones["telefono"];
-                    ins.Alumno.FechaNacimiento = (DateTime)drInscripciones["fecha_nac"];
-                    ins.Alumno.Legajo = (int)drInscripciones["legajo"];
+
+                    Persona per = new Persona();
+                    per.ID = (int)drInscripciones["id_persona"];
+                    per.Nombre = (string)drInscripciones["nombre"];
+                    per.Apellido = (string)drInscripciones["apellido"];
+                    per.Email = (string)drInscripciones["email"];
+                    per.Direccion = (string)drInscripciones["direccion"];
+                    per.Telefono = (string)drInscripciones["telefono"];
+                    per.FechaNacimiento = (DateTime)drInscripciones["fecha_nac"];
+                    per.Legajo = (int)drInscripciones["legajo"];
                     switch ((int)drInscripciones["tipo_persona"])
                     {
                         case 1:
-                            ins.Alumno.TipoPersona = "No docente";
+                            per.TipoPersona = "No docente";
                             break;
                         case 2:
-                            ins.Alumno.TipoPersona = "Alumno";
+                            per.TipoPersona = "Alumno";
                             break;
                         case 3:
-                            ins.Alumno.TipoPersona = "Docente";
+                            per.TipoPersona = "Docente";
                             break;
                     }
-                    ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
-                    ins.Curso.ID = (int)drInscripciones["id_curso"];
-                    ins.Curso.AnioCalendario = (int)drInscripciones["anio_calendario"];
-                    ins.Curso.Comision.Descripcion = (string)drInscripciones["desc_comision"];
-                    ins.Curso.Materia.Descripcion = (string)drInscripciones["desc_materia"];
+                    Plan pla = new Plan();
+                    pla.ID = (int)drInscripciones["id_plan"];
+                    per.Plan = pla;
+
+                    Curso cur = new Curso();
+                    cur.ID = (int)drInscripciones["id_curso"];
+                    cur.AnioCalendario = (int)drInscripciones["anio_calendario"];
+                    Comision com = new Comision();
+                    com.Descripcion = (string)drInscripciones["desc_comision"];
+                    Materia mat = new Materia();
+                    mat.Descripcion = (string)drInscripciones["desc_materia"];
+                    cur.Comision = com;
+                    cur.Materia = mat;
+                    
+                    ins.Alumno = per;
+                    ins.Curso = cur;
+                    
                     inscripciones.Add(ins);
                 }
                 drInscripciones.Close();
@@ -129,7 +158,9 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones where id_inscripcion=@id", sqlConn);
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones a INNER JOIN personas p on a.id_alumno=p.id_persona"
+                    + "INNER JOIN curso c on c.id_curso=a.id_curso INNER JOIN planes pl on pl.id_plan=p.id_plan" +
+                    " where id_inscripcion=@id", sqlConn);
                 cmdInscripciones.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
 
@@ -137,28 +168,37 @@ namespace Data.Database
                 {
                     ins.ID = (int)drInscripciones["id_inscripcion"];
                     ins.Condicion = (string)drInscripciones["condicion"];
-                    ins.Alumno.ID = (int)drInscripciones["id_persona"];
-                    ins.Alumno.Nombre = (string)drInscripciones["nombre"];
-                    ins.Alumno.Apellido = (string)drInscripciones["apellido"];
-                    ins.Alumno.Email = (string)drInscripciones["email"];
-                    ins.Alumno.Direccion = (string)drInscripciones["direccion"];
-                    ins.Alumno.Telefono = (string)drInscripciones["telefono"];
-                    ins.Alumno.FechaNacimiento = (DateTime)drInscripciones["fecha_nac"];
-                    ins.Alumno.Legajo = (int)drInscripciones["legajo"];
+
+                    Persona per = new Persona();
+                    per.ID = (int)drInscripciones["id_persona"];
+                    per.Nombre = (string)drInscripciones["nombre"];
+                    per.Apellido = (string)drInscripciones["apellido"];
+                    per.Email = (string)drInscripciones["email"];
+                    per.Direccion = (string)drInscripciones["direccion"];
+                    per.Telefono = (string)drInscripciones["telefono"];
+                    per.FechaNacimiento = (DateTime)drInscripciones["fecha_nac"];
+                    per.Legajo = (int)drInscripciones["legajo"];
                     switch ((int)drInscripciones["tipo_persona"])
                     {
                         case 1:
-                            ins.Alumno.TipoPersona = "No docente";
+                            per.TipoPersona = "No docente";
                             break;
                         case 2:
-                            ins.Alumno.TipoPersona = "Alumno";
+                            per.TipoPersona = "Alumno";
                             break;
                         case 3:
-                            ins.Alumno.TipoPersona = "Docente";
+                            per.TipoPersona = "Docente";
                             break;
                     }
-                    ins.Alumno.Plan.ID = (int)drInscripciones["id_plan"];
-                    ins.Curso.ID = (int)drInscripciones["id_curso"];
+                    Plan pla = new Plan();
+                    pla.ID = (int)drInscripciones["id_plan"];
+                    per.Plan = pla;
+
+                    Curso cur = new Curso();
+                    cur.ID = (int)drInscripciones["id_curso"];
+
+                    ins.Alumno = per;
+                    ins.Curso = cur;
                 }
 
                 drInscripciones.Close();

@@ -218,7 +218,7 @@ namespace Data.Database
             mat.State = BusinessEntity.States.Unmodified;
         }
 
-        /*public List<Materia> GetMateriasParaInscripcion(int IDPlan, int IDAlumno)
+        public List<Materia> GetMateriasParaInscripcion(int IDPlan, int IDAlumno)
         {
             List<Materia> materias = new List<Materia>();
             try
@@ -255,6 +255,6 @@ namespace Data.Database
                 this.CloseConnection();
             }
             return materias;
-        }*/
+        }
     }
 }

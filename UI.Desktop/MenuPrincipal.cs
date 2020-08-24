@@ -13,11 +13,19 @@ namespace UI.Desktop
 {
     public partial class MenuPrincipal : Form
     {
-        public MenuPrincipal()
+        
+        public MenuPrincipal(Usuario u)
         {
             InitializeComponent();
+            this.usuarioActual = u;
         }
 
+        private Usuario usuarioActual;
+        public Usuario UsuarioActual
+        {
+            get { return usuarioActual; }
+            set { usuarioActual = value; }
+        }
         private void btnEspecialidades_Click(object sender, EventArgs e)
         {
             Especialidades esp = new Especialidades();
