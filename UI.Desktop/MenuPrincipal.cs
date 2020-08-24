@@ -77,5 +77,31 @@ namespace UI.Desktop
             Personas persona = new Personas();
             persona.ShowDialog();
         }
+
+        private void btnInscripciones_Click(object sender, EventArgs e)
+        {
+            Inscripciones alumnoInscripcion = new Inscripciones(usuarioActual);
+            alumnoInscripcion.ShowDialog();
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Login login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                this.usuarioActual = login.UsuarioActual;
+                this.Visible = true;
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

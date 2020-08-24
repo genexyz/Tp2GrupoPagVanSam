@@ -224,8 +224,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetMateriasParaInscripcion = new SqlCommand("select * from  m INNER JOIN planes p on m.id_plan = p.id_plan "
-                    + "where id_alumno=@idAlumno and id_plan=@idPlan", sqlConn);
+                SqlCommand cmdGetMateriasParaInscripcion = new SqlCommand("select * from materias m INNER JOIN planes p on m.id_plan = p.id_plan "
+                    + "INNER JOIN personas pe on pe.id_plan=p.id_plan WHERE id_persona=@idAlumno and pe.id_plan=@idPlan", sqlConn);
                 cmdGetMateriasParaInscripcion.Parameters.Add("@idPlan", SqlDbType.Int).Value = IDPlan;
                 cmdGetMateriasParaInscripcion.Parameters.Add("@idAlumno", SqlDbType.Int).Value = IDAlumno;
                 SqlDataReader drMaterias = cmdGetMateriasParaInscripcion.ExecuteReader();
