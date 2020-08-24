@@ -46,10 +46,9 @@ namespace Business.Logic
         {
             CursoData.Save(cur);
         }
-
-        /*public List<Curso> GetCursosDocente(int IDDocente)
+        public List<Curso> GetCursosDocente(int IDDocente)
         {
             return CursoData.GetCursosDocente(IDDocente);
-        }*/
+        }
     }
 }

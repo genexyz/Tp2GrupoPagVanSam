@@ -224,9 +224,10 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdGetMateriasParaInscripcion = new SqlCommand("GetMateriasParaInscripcion", sqlConn);
-                cmdGetMateriasParaInscripcion.Parameters.Add("@id_plan", SqlDbType.Int).Value = IDPlan;
-                cmdGetMateriasParaInscripcion.Parameters.Add("@id_alumno", SqlDbType.Int).Value = IDAlumno;
+                SqlCommand cmdGetMateriasParaInscripcion = new SqlCommand("select * from  m INNER JOIN planes p on m.id_plan = p.id_plan "
+                    + "where id_alumno=@idAlumno and id_plan=@idPlan", sqlConn);
+                cmdGetMateriasParaInscripcion.Parameters.Add("@idPlan", SqlDbType.Int).Value = IDPlan;
+                cmdGetMateriasParaInscripcion.Parameters.Add("@idAlumno", SqlDbType.Int).Value = IDAlumno;
                 SqlDataReader drMaterias = cmdGetMateriasParaInscripcion.ExecuteReader();
 
                 while (drMaterias.Read())
@@ -236,13 +237,17 @@ namespace Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HSSemanales = (int)drMaterias["hs_semanales"];
                     mat.HSTotales = (int)drMaterias["hs_totales"];
-                    mat.Plan.ID = (int)drMaterias["id_plan"];
+
+                    Plan pla = new Plan();
+                    pla.ID = (int)drMaterias["id_plan"];
+                    mat.Plan = pla;
                     materias.Add(mat);
                 }
             }
-            catch (Exception e)
+            catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar las materias disponibles para el alumno.", e);
+                Exception ExcepcionManejada = 
+                    new Exception("Error al recuperar las materias disponibles para el alumno.", Ex);
                 throw ExcepcionManejada;
             }
             finally

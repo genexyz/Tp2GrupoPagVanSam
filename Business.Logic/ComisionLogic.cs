@@ -47,7 +47,7 @@ namespace Business.Logic
             ComisionData.Delete(ID);
         }
 
-        /*public List<Comision> GetComisionesDisponibles(int IDMateria)
+        public List<Comision> GetComisionesDisponibles(int IDMateria)
         {
             List<Comision> comisiones = new List<Comision>();
             CursoLogic curlog = new CursoLogic();
@@ -59,6 +59,6 @@ namespace Business.Logic
                 }
             }
             return comisiones;
-        }*/
+        }
     }
 }

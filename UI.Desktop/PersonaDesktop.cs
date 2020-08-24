@@ -23,12 +23,12 @@ namespace UI.Desktop
 
         }
 
-        Persona _PersonaActual;
+        Persona personaActual;
 
         public Persona PersonaActual
         {
-            get { return _PersonaActual; }
-            set { _PersonaActual = value; }
+            get { return personaActual; }
+            set { personaActual = value; }
         }
 
         public PersonaDesktop(ModoForm modo) : this()
@@ -43,7 +43,7 @@ namespace UI.Desktop
             PersonaLogic PersonaNegocio = new PersonaLogic();
             try
             {
-                _PersonaActual = PersonaNegocio.GetOne(ID);
+                personaActual = PersonaNegocio.GetOne(ID);
                 this.LlenarComboEspecialidades();
                 this.MapearDeDatos();
             }
@@ -144,7 +144,7 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 if (Modo == ModoForm.Modificacion)
-                    PersonaActual.ID = Convert.ToInt32(this.txtID.Text);
+                PersonaActual.ID = Convert.ToInt32(this.txtID.Text);
                 PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
                 PersonaActual.Apellido = this.txtApellido.Text;
                 PersonaActual.Nombre = this.txtNombre.Text;
@@ -163,7 +163,7 @@ namespace UI.Desktop
             {
                 this.MapearADatos();
                 PersonaLogic PersonaLogic = new PersonaLogic();
-                if (Modo != ModoForm.Alta || !PersonaLogic.Existe(_PersonaActual.Legajo))
+                if (Modo != ModoForm.Alta || !PersonaLogic.Existe(personaActual.Legajo))
                     PersonaLogic.Save(PersonaActual);
                 else this.Notificar("Ya existe una Persona con este Legajo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

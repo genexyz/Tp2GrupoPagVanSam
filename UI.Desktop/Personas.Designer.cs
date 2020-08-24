@@ -239,7 +239,7 @@
             this.cbxTipoPersona});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(204, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(237, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // tsbNuevo

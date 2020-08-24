@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Logic;
 using Business.Entities;
@@ -19,150 +18,157 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
-        Usuario _usuarioActual;
-
-        public Usuario UsuarioActual
+        private void UsuarioDesktop_Load(object sender, EventArgs e)
         {
-            get { return _usuarioActual; }
-            set { _usuarioActual = value; }
+            if (_UsuarioActual.Persona.TipoPersona == "No docente")
+                this.dgvPermisos.Visible = true;
+            else
+                this.dgvPermisos.Visible = false;
         }
+
+        Usuario _UsuarioActual;
+
         public UsuarioDesktop(ModoForm modo) : this()
         {
             this.Modo = modo;
+            _UsuarioActual = new Usuario();
+
         }
-        public UsuarioDesktop(int id, ModoForm modo) : this() 
+
+        public UsuarioDesktop(int ID, ModoForm modo) : this()
         {
             this.Modo = modo;
-            UsuarioLogic usuarioLogic = new UsuarioLogic();
-            this.UsuarioActual = usuarioLogic.GetOne(id);
-            MapearDeDatos();
+            UsuarioLogic UsuarioNegocio = new UsuarioLogic();
+            try
+            {
+                _UsuarioActual = UsuarioNegocio.GetOne(ID);
+                /*if (_UsuarioActual.Persona.TipoPersona == "No docente")
+                {
+                    this.dgvPermisos.AutoGenerateColumns = false;
+                    ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
+                    dgvPermisos.DataSource = logic.GetAll(ID);
+                }*/
+                this.MapearDeDatos();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public Usuario UsuarioActual
+        {
+            get { return _UsuarioActual; }
+            set { _UsuarioActual = value; }
         }
 
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.UsuarioActual.ID.ToString();
-            this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-            this.txtNombre.Text = this.UsuarioActual.Nombre;
-            this.txtApellido.Text = this.UsuarioActual.Apellido;
-            this.txtClave.Text = this.UsuarioActual.Clave;
-            this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
-            this.txtEmail.Text = this.UsuarioActual.Email;
-            this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
+            this.txtID.Text = _UsuarioActual.ID.ToString();
+            this.txtUsuario.Text = _UsuarioActual.NombreUsuario;
+            this.txtClave.Text = _UsuarioActual.Clave;
+            this.txtConfirmarClave.Text = _UsuarioActual.Clave;
+            this.chkHabilitado.Checked = _UsuarioActual.Habilitado;
+            this.txtPersona.Text = _UsuarioActual.Apellido + " " + _UsuarioActual.Nombre;
 
-            switch (Modo)
+            switch (this.Modo)
             {
-                case ModoForm.Alta:
-                    this.btnAceptar.Text = "Guardar";
-                    break;
-                case ModoForm.Modificacion:
-                    this.btnAceptar.Text = "Guardar";
-                    break;
                 case ModoForm.Baja:
                     this.btnAceptar.Text = "Eliminar";
                     break;
                 case ModoForm.Consulta:
                     this.btnAceptar.Text = "Aceptar";
                     break;
+                default:
+                    this.btnAceptar.Text = "Guardar";
+                    break;
             }
-            
-
-
         }
-        public override void MapearADatos() 
+
+        public override void MapearADatos()
         {
-            if (Modo == ModoForm.Alta)
+            switch (this.Modo)
             {
-                var usuario = new Usuario();
-                UsuarioActual = usuario;
+                case ModoForm.Baja:
+                    _UsuarioActual.State = Usuario.States.Deleted;
+                    break;
+                case ModoForm.Consulta:
+                    _UsuarioActual.State = Usuario.States.Unmodified;
+                    break;
+                case ModoForm.Alta:
+                    _UsuarioActual.State = Usuario.States.New;
+                    break;
+                case ModoForm.Modificacion:
+                    _UsuarioActual.State = Usuario.States.Modified;
+                    break;
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                if (Modo == ModoForm.Modificacion) { this.UsuarioActual.ID = int.Parse(this.txtID.Text); }
-                this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                this.UsuarioActual.Persona.Nombre = this.txtNombre.Text;
-                this.UsuarioActual.Persona.Apellido = this.txtApellido.Text;
-                this.UsuarioActual.Clave = this.txtClave.Text;
-                this.UsuarioActual.Persona.Email = this.txtEmail.Text;
-                this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
-            }
-            switch (Modo)
-            {
-                case ModoForm.Alta:
-                    UsuarioActual.State = BusinessEntity.States.New;
-                    break;
-                case ModoForm.Modificacion:
-                    UsuarioActual.State = BusinessEntity.States.Modified;
-                    break;
-                case ModoForm.Baja:
-                    UsuarioActual.State = BusinessEntity.States.Deleted;
-                    break;
-                case ModoForm.Consulta:
-                    UsuarioActual.State = BusinessEntity.States.Unmodified;
-                    break;
+                if (Modo == ModoForm.Modificacion)
+                _UsuarioActual.ID = Convert.ToInt32(this.txtID.Text);
+                _UsuarioActual.NombreUsuario = this.txtUsuario.Text;
+                _UsuarioActual.Clave = this.txtClave.Text;
+                _UsuarioActual.Habilitado = this.chkHabilitado.Checked;
+                /*foreach (DataGridViewRow row in this.dgvPermisos.Rows)
+                {
+                    _UsuarioActual.ModulosUsuarios.Add((ModuloUsuario)row.DataBoundItem);
+                }*/
             }
 
         }
-        public override void GuardarCambios() 
-        {
-            MapearADatos();
-            var usuariologic = new UsuarioLogic();
-            usuariologic.Save(UsuarioActual);
-        }
-        public override bool Validar()
-        {
-            bool valido = true;
-            if (
-            this.txtNombre.TextLength == 0 ||
-            this.txtApellido.TextLength == 0 ||
-            this.txtClave.TextLength == 0 ||
-            this.txtConfirmarClave.TextLength == 0 ||
-            this.txtEmail.TextLength == 0 ||
-            this.txtUsuario.TextLength == 0)
-            {
-                Notificar("Alguno de los campos esta vacio",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                valido = false;
-            }
-            if (this.txtClave.TextLength < 8)
-            {
-                Notificar("La clave tiene menos de 8 caracteres",
-                      MessageBoxButtons.OK, MessageBoxIcon.Error);
-                valido = false;
-            }
-            if (this.txtClave.Text != this.txtConfirmarClave.Text)
-            {
-                Notificar("Las claves no coinciden",
-                      MessageBoxButtons.OK, MessageBoxIcon.Error);
-                valido = false;
-            }
-            if (!IsEmailValid(this.txtEmail.ToString())) 
-            {
-                Notificar("El email no es valido",
-                      MessageBoxButtons.OK, MessageBoxIcon.Error);
-                valido = false;
-            }
-            return valido;
-        
-        }
 
-        public bool IsEmailValid(string emailaddress)
+        public override void GuardarCambios()
         {
             try
             {
-                System.Net.Mail.MailAddress m = new System.Net.Mail.MailAddress(emailaddress);
-                return true;
+                this.MapearADatos();
+                UsuarioLogic userlogic = new UsuarioLogic();
+                if (Modo != ModoForm.Alta || !userlogic.Existe(_UsuarioActual.NombreUsuario))
+                    userlogic.Save(_UsuarioActual);
+                else this.Notificar("Ya existe un Usuario con ese Nombre de Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                return false;
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public override bool Validar()
+        {
+            Boolean EsValido = true;
+            foreach (Control oControls in this.Controls)
+            {
+                if (oControls is TextBox && oControls.Text == String.Empty && oControls != this.txtID)
+                {
+                    EsValido = false;
+                    break;
+                }
+            }
+            if (EsValido == false)
+                this.Notificar("Todos los campos son obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (this.txtClave.Text != this.txtConfirmarClave.Text)
+            {
+                EsValido = false;
+                this.Notificar("La clave no coincide con la confirmacion de la misma", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (this.txtClave.Text.Length < 8)
+            {
+                EsValido = false;
+                this.Notificar("La clave debe tener al menos 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (this._UsuarioActual.Persona.ID == 0)
+            {
+                EsValido = false;
+                this.Notificar("No se le asignó una Persona al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return EsValido;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Validar())
             {
-                GuardarCambios();
+                this.GuardarCambios();
                 this.Close();
             }
         }
@@ -170,6 +176,30 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSeleccionarPersona_Click(object sender, EventArgs e)
+        {
+            SeleccionarPersona select = new SeleccionarPersona(_UsuarioActual);
+            select.ShowDialog();
+            this._UsuarioActual = select.UsuarioActual;
+            this.txtPersona.Text = _UsuarioActual.Apellido + " " + _UsuarioActual.Nombre;
+            /*if (_UsuarioActual.Persona.TipoPersona == "No docente")
+            {
+                try
+                {
+                    this.dgvPermisos.AutoGenerateColumns = false;
+                    ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
+                    dgvPermisos.DataSource = logic.GetAll(0);
+                    dgvPermisos.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+                this.dgvPermisos.Visible = false;*/
         }
     }
 }

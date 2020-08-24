@@ -10,7 +10,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAABCAEAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAEAAAABAAAAgA=</HashCode>
       <FileName>BusinessEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -19,19 +19,19 @@
     <InheritanceLine Type="Business.Entities.BusinessEntity" FixedToPoint="true">
       <Path>
         <Point X="8.75" Y="3.151" />
-        <Point X="8.75" Y="6.104" />
-        <Point X="7.25" Y="6.104" />
+        <Point X="8.75" Y="6.299" />
+        <Point X="7.25" Y="6.299" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAEAEAABABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Modulo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Business.Entities.ModuloUsuario">
     <Position X="6.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAwAACAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAA=</HashCode>
+      <HashCode>AQCAgAQAwAAEAEAAAQAAAAAAAAACAAAAAQAACAEAAAg=</HashCode>
       <FileName>ModuloUsuario.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -60,7 +60,7 @@
     <Position X="4.25" Y="7.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAACQAIQCkACEAhAAAAAUAAAABAAACAhAAAAI=</HashCode>
-      <FileName>Personas.cs</FileName>
+      <FileName>Persona.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Business.Entities.AlumnoInscripcion">

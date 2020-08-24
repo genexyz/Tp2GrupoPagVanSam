@@ -27,6 +27,12 @@ namespace Business.Logic
         {
             return UsuarioData.GetOne(id);
         }
+
+        public bool Existe(string nomUsu)
+        {
+            return usuarioData.ExisteUsuario(nomUsu);
+        }
+
         public List<Usuario> GetAll()
         {
             return UsuarioData.GetAll();
@@ -39,8 +45,10 @@ namespace Business.Logic
         {
             UsuarioData.Delete(id);
         }
-
-
+        public Usuario GetUsuarioForLogin(string user, string pass)
+        {
+            return UsuarioData.GetUsuarioForLogin(user, pass);
+        }
 
     }
 }

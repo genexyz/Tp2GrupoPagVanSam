@@ -14,18 +14,18 @@ namespace Business.Entities
 
         }
 
-        private int _ID;
+        private int id;
         public int ID
         {
-            get { return _ID; }
-            set { _ID = value; }
+            get { return id; }
+            set { id = value; }
         }
 
-        private States _State;
+        private States state;
         public States State
         {
-            get { return _State; }
-            set { _State = value; }
+            get { return state; }
+            set { state = value; }
 
         }
 

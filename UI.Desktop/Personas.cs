@@ -81,7 +81,6 @@ namespace UI.Desktop
                     int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
                     PersonaLogic per = new PersonaLogic();
                     per.Delete(ID);
-                    this.Listar(cbxTipoPersona.SelectedItem.ToString());
                 }
                 catch (Exception ex)
                 {
