@@ -28,6 +28,7 @@ namespace UI.Desktop
         public Usuario UsuarioActual
         {
             get { return usuarioActual; }
+            set { usuarioActual = value; }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

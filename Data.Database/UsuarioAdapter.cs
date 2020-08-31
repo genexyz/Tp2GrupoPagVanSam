@@ -255,7 +255,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand GetUsuarioForLogin = new SqlCommand("Select * from usuarios u INNER JOIN personas p on u.id_persona=p.id_persona "
-                    + "INNER JOIN planes pl on pl.id_plan=p.id_plan where nombre_usuario=@user and clave=@pass", sqlConn);
+                    + "INNER JOIN planes pl on pl.id_plan=p.id_plan INNER JOIN especialidades e on pl.id_especialidad=e.id_especialidad where nombre_usuario=@user and clave=@pass", sqlConn);
                 GetUsuarioForLogin.Parameters.Add("@user", SqlDbType.VarChar).Value = user;
                 GetUsuarioForLogin.Parameters.Add("@pass", SqlDbType.VarChar).Value = pass;
                 SqlDataReader drUsuarios = GetUsuarioForLogin.ExecuteReader();
@@ -289,6 +289,11 @@ namespace Data.Database
                     }
                     Plan pla = new Plan();
                     pla.ID = (int)drUsuarios["id_plan"];
+                    pla.Descripcion = (string)drUsuarios["desc_plan"];
+                    Especialidad esp = new Especialidad();
+                    esp.ID = (int)drUsuarios["id_especialidad"];
+                    esp.Descripcion = (string)drUsuarios["desc_especialidad"];
+                    pla.Especialidad = esp;
                     per.Plan = pla;
                     usr.Persona = per;
                 }

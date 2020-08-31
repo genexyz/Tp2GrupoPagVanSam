@@ -26,8 +26,8 @@ namespace Business.Entities
 
         public Persona Alumno
         {
-            get { return Alumno; }
-            set { Alumno = value; }
+            get { return alumno; }
+            set { alumno = value; }
             
         }
 
