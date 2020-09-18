@@ -13,10 +13,17 @@ namespace UI.Desktop
 {
     public partial class Comisiones : ApplicationForm
     {
-        
-        public Comisiones()
+        private Usuario usuarioActual;
+
+        public Usuario UsuarioActual
+        {
+            get { return usuarioActual; }
+            set { usuarioActual = value; }
+        }
+        public Comisiones(Usuario us)
         {
             InitializeComponent();
+            UsuarioActual = us;
             dgvComisiones.AutoGenerateColumns = false;
         }
 
@@ -35,6 +42,16 @@ namespace UI.Desktop
 
         private void Comisiones_Load(object sender, EventArgs e)
         {
+            foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+            {
+                if (mu.Modulo.Descripcion == "Comisiones")
+                {
+                    this.dgvComisiones.Visible = mu.PermiteConsulta;
+                    this.tsbNuevo.Visible = mu.PermiteAlta;
+                    this.tsbEliminar.Visible = mu.PermiteBaja;
+                    this.tsbEditar.Visible = mu.PermiteModificacion;
+                }
+            }
             this.Listar();
         }
 

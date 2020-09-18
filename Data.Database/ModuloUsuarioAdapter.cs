@@ -17,19 +17,19 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdModulosUsuarios = new SqlCommand("select * from modulos_usuarios mu inner join modulos m on m.id_modulo=mu.id_modulo" +
-                    "and mu.id_usuario=@id", sqlConn);
+                    " and mu.id_usuario=@id", sqlConn);
                 cmdModulosUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
                 SqlDataReader drModulosUsuarios = cmdModulosUsuarios.ExecuteReader();
 
                 while (drModulosUsuarios.Read())
                 {
                     ModuloUsuario modusu = new ModuloUsuario();
-                    modusu.ID = drModulosUsuarios.IsDBNull(2) ? modusu.ID = 0 : (int)drModulosUsuarios["id_modulo_usuario"];
-                    modusu.IdUsuario = drModulosUsuarios.IsDBNull(7) ? modusu.IdUsuario = idUsuario : (int)drModulosUsuarios["id_usuario"];
-                    modusu.PermiteAlta = drModulosUsuarios.IsDBNull(3) ? modusu.PermiteAlta = false : (bool)drModulosUsuarios["alta"];
-                    modusu.PermiteBaja = drModulosUsuarios.IsDBNull(4) ? modusu.PermiteBaja = false : (bool)drModulosUsuarios["baja"];
-                    modusu.PermiteModificacion = drModulosUsuarios.IsDBNull(5) ? modusu.PermiteModificacion = false : (bool)drModulosUsuarios["modificacion"];
-                    modusu.PermiteConsulta = drModulosUsuarios.IsDBNull(6) ? modusu.PermiteConsulta = false : (bool)drModulosUsuarios["consulta"];
+                    modusu.ID = (int)drModulosUsuarios["id_modulo_usuario"];
+                    modusu.IdUsuario = (int)drModulosUsuarios["id_usuario"];
+                    modusu.PermiteAlta = (bool)drModulosUsuarios["alta"];
+                    modusu.PermiteBaja = (bool)drModulosUsuarios["baja"];
+                    modusu.PermiteModificacion = (bool)drModulosUsuarios["modificacion"];
+                    modusu.PermiteConsulta = (bool)drModulosUsuarios["consulta"];
 
                     Modulo mod = new Modulo();
                     mod.ID = (int)drModulosUsuarios["id_modulo"];
@@ -59,7 +59,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdPermisosModulosUsuarios = new SqlCommand("select * from modulos_usuarios mu " +
-                    "inner join modulos m on mu.id_modulo=m.id_modulo" +
+                    "inner join modulos m on mu.id_modulo=m.id_modulo " +
                     "WHERE mu.id_usuario=@id", sqlConn);
                 cmdPermisosModulosUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
                 SqlDataReader drModulosUsuarios = cmdPermisosModulosUsuarios.ExecuteReader();

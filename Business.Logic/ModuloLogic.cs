@@ -22,9 +22,9 @@ namespace Business.Logic
             set { moduloData = value; }
         }
 
-        public Modulo GetOne(string d)
+        public Modulo GetOne(string str)
         {
-            return ModuloData.GetOne(d);
+            return ModuloData.GetOne(str);
         }
 
         public List<Modulo> GetAll()

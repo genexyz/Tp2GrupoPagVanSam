@@ -44,6 +44,7 @@
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="AlumnoInscripcionLogic.cs" />
     <Compile Include="DocenteCursoLogic.cs" />
+    <Compile Include="ModuloUsuarioLogic.cs" />
     <Compile Include="ModuloLogic.cs" />
     <Compile Include="PersonaLogic.cs" />
     <Compile Include="CursoLogic.cs" />

@@ -124,7 +124,10 @@ namespace UI.Desktop
             SeleccionarDocentes doc = new SeleccionarDocentes(cursoActual);
             doc.ShowDialog();
             docenteCursoActual.Docente = doc.Docente;
-            this.txtDocente.Text = docenteCursoActual.Docente.Apellido + " " + docenteCursoActual.Docente.Nombre;
+            if (docenteCursoActual.Docente != null)
+            {
+                this.txtDocente.Text = docenteCursoActual.Docente.Apellido + " " + docenteCursoActual.Docente.Nombre;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

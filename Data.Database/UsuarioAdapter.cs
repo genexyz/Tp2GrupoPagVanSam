@@ -187,6 +187,13 @@ namespace Data.Database
                 cmdUpdate.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdUpdate.Parameters.Add("@idPersona", SqlDbType.Int).Value = usuario.Persona.ID;
                 cmdUpdate.ExecuteNonQuery();
+
+                ModuloUsuarioAdapter muadapter = new ModuloUsuarioAdapter();
+                foreach (ModuloUsuario mu in usuario.ModulosUsuarios)
+                {
+                    mu.State = BusinessEntity.States.Modified;
+                    muadapter.Save(mu);
+                }
             }
             catch (Exception Ex)
             {

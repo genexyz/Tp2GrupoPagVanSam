@@ -24,7 +24,7 @@ namespace Data.Database
                     Modulo mod = new Modulo();
                     mod.ID = (int)drModulos["id_modulo"];
                     mod.Descripcion = (string)drModulos["desc_modulo"];
-                    mod.Ejecuta = (string)drModulos["ejecuta"];
+                    //mod.Ejecuta = (string)drModulos["ejecuta"];
 
                     modulos.Add(mod);
                 }

@@ -13,10 +13,18 @@ namespace UI.Desktop
 {
     public partial class Cursos : ApplicationForm
     {
+        private Usuario usuarioActual;
 
-        public Cursos()
+        public Usuario UsuarioActual
+        {
+            get { return usuarioActual; }
+            set { usuarioActual = value; }
+        }
+        
+        public Cursos(Usuario us)
         {
             InitializeComponent();
+            UsuarioActual = us;
             dgvCursos.AutoGenerateColumns = false;
         }
 
@@ -35,6 +43,17 @@ namespace UI.Desktop
 
         private void Cursos_Load(object sender, EventArgs e)
         {
+            foreach (ModuloUsuario mu in UsuarioActual.ModulosUsuarios)
+            {
+                if (mu.Modulo.Descripcion == "Cursos")
+                {
+                    this.dgvCursos.Visible = mu.PermiteConsulta;
+                    this.tsbNuevo.Visible = mu.PermiteAlta;
+                    this.tsbEliminar.Visible = mu.PermiteBaja;
+                    this.tsbEditar.Visible = mu.PermiteModificacion;
+                    this.tsbDocentes.Visible = mu.PermiteModificacion || mu.PermiteAlta || mu.PermiteBaja; 
+                }
+            }
             this.Listar();
         }
 

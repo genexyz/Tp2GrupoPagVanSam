@@ -40,7 +40,7 @@
             this.lblComisiones = new System.Windows.Forms.Label();
             this.lblMaterias = new System.Windows.Forms.Label();
             this.btnMaterias = new System.Windows.Forms.Button();
-            this.ctnCursos = new System.Windows.Forms.Button();
+            this.btnCursos = new System.Windows.Forms.Button();
             this.lblCursos = new System.Windows.Forms.Label();
             this.btnPersonas = new System.Windows.Forms.Button();
             this.lblPersonas = new System.Windows.Forms.Label();
@@ -65,6 +65,8 @@
             this.planesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInscripciones = new System.Windows.Forms.Button();
             this.lblInscripcion = new System.Windows.Forms.Label();
+            this.lblRegistrarNotas = new System.Windows.Forms.Label();
+            this.btnRegistrarNotas = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -200,17 +202,17 @@
             this.btnMaterias.UseVisualStyleBackColor = false;
             this.btnMaterias.Click += new System.EventHandler(this.btnMaterias_Click);
             // 
-            // ctnCursos
+            // btnCursos
             // 
-            this.ctnCursos.BackColor = System.Drawing.Color.White;
-            this.ctnCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctnCursos.Location = new System.Drawing.Point(267, 173);
-            this.ctnCursos.Name = "ctnCursos";
-            this.ctnCursos.Size = new System.Drawing.Size(126, 43);
-            this.ctnCursos.TabIndex = 29;
-            this.ctnCursos.Text = "Ingresar";
-            this.ctnCursos.UseVisualStyleBackColor = false;
-            this.ctnCursos.Click += new System.EventHandler(this.ctnCursos_Click);
+            this.btnCursos.BackColor = System.Drawing.Color.White;
+            this.btnCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCursos.Location = new System.Drawing.Point(267, 173);
+            this.btnCursos.Name = "btnCursos";
+            this.btnCursos.Size = new System.Drawing.Size(126, 43);
+            this.btnCursos.TabIndex = 29;
+            this.btnCursos.Text = "Ingresar";
+            this.btnCursos.UseVisualStyleBackColor = false;
+            this.btnCursos.Click += new System.EventHandler(this.ctnCursos_Click);
             // 
             // lblCursos
             // 
@@ -277,14 +279,14 @@
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -412,6 +414,29 @@
             this.lblInscripcion.TabIndex = 35;
             this.lblInscripcion.Text = "Inscripciones";
             // 
+            // lblRegistrarNotas
+            // 
+            this.lblRegistrarNotas.AutoSize = true;
+            this.lblRegistrarNotas.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistrarNotas.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistrarNotas.ForeColor = System.Drawing.Color.White;
+            this.lblRegistrarNotas.Location = new System.Drawing.Point(505, 45);
+            this.lblRegistrarNotas.Name = "lblRegistrarNotas";
+            this.lblRegistrarNotas.Size = new System.Drawing.Size(174, 26);
+            this.lblRegistrarNotas.TabIndex = 36;
+            this.lblRegistrarNotas.Text = "Registrar Notas";
+            // 
+            // btnRegistrarNotas
+            // 
+            this.btnRegistrarNotas.BackColor = System.Drawing.Color.White;
+            this.btnRegistrarNotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarNotas.Location = new System.Drawing.Point(510, 74);
+            this.btnRegistrarNotas.Name = "btnRegistrarNotas";
+            this.btnRegistrarNotas.Size = new System.Drawing.Size(126, 43);
+            this.btnRegistrarNotas.TabIndex = 37;
+            this.btnRegistrarNotas.Text = "Ingresar";
+            this.btnRegistrarNotas.UseVisualStyleBackColor = false;
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,12 +444,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(769, 508);
+            this.Controls.Add(this.btnRegistrarNotas);
+            this.Controls.Add(this.lblRegistrarNotas);
             this.Controls.Add(this.lblInscripcion);
             this.Controls.Add(this.btnInscripciones);
             this.Controls.Add(this.lblPersonas);
             this.Controls.Add(this.btnPersonas);
             this.Controls.Add(this.lblCursos);
-            this.Controls.Add(this.ctnCursos);
+            this.Controls.Add(this.btnCursos);
             this.Controls.Add(this.btnMaterias);
             this.Controls.Add(this.lblMaterias);
             this.Controls.Add(this.lblComisiones);
@@ -463,7 +490,7 @@
         private System.Windows.Forms.Label lblComisiones;
         private System.Windows.Forms.Label lblMaterias;
         private System.Windows.Forms.Button btnMaterias;
-        private System.Windows.Forms.Button ctnCursos;
+        private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.Label lblCursos;
         private System.Windows.Forms.Button btnPersonas;
         private System.Windows.Forms.Label lblPersonas;
@@ -488,5 +515,7 @@
         private System.Windows.Forms.ToolStripMenuItem planesToolStripMenuItem;
         private System.Windows.Forms.Button btnInscripciones;
         private System.Windows.Forms.Label lblInscripcion;
+        private System.Windows.Forms.Label lblRegistrarNotas;
+        private System.Windows.Forms.Button btnRegistrarNotas;
     }
 }

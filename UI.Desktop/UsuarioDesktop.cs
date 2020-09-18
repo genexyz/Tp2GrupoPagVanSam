@@ -42,12 +42,12 @@ namespace UI.Desktop
             try
             {
                 usuarioActual = UsuarioNegocio.GetOne(ID);
-                /*if (usuarioActual.Persona.TipoPersona == "No docente")
+                if (usuarioActual.Persona.TipoPersona == "No docente")
                 {
                     this.dgvPermisos.AutoGenerateColumns = false;
                     ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
                     dgvPermisos.DataSource = logic.GetAll(ID);
-                }*/
+                }
                 this.MapearDeDatos();
             }
             catch (Exception ex)
@@ -109,10 +109,11 @@ namespace UI.Desktop
                 usuarioActual.NombreUsuario = this.txtUsuario.Text;
                 usuarioActual.Clave = this.txtClave.Text;
                 usuarioActual.Habilitado = this.chkHabilitado.Checked;
-                /*foreach (DataGridViewRow row in this.dgvPermisos.Rows)
+                foreach (DataGridViewRow row in this.dgvPermisos.Rows)
                 {
                     usuarioActual.ModulosUsuarios.Add((ModuloUsuario)row.DataBoundItem);
-                }*/
+                }
+                
             }
 
         }
@@ -184,13 +185,13 @@ namespace UI.Desktop
             select.ShowDialog();
             this.usuarioActual = select.UsuarioActual;
             this.txtPersona.Text = usuarioActual.Apellido + " " + usuarioActual.Nombre;
-            /*if (usuarioActual.Persona.TipoPersona == "No docente")
+            if (usuarioActual.Persona.TipoPersona == "No docente")
             {
                 try
                 {
                     this.dgvPermisos.AutoGenerateColumns = false;
                     ModuloUsuarioLogic logic = new ModuloUsuarioLogic();
-                    dgvPermisos.DataSource = logic.GetAll(0);
+                    dgvPermisos.DataSource = logic.GetAll(UsuarioActual.ID);
                     dgvPermisos.Visible = true;
                 }
                 catch (Exception ex)
@@ -199,7 +200,7 @@ namespace UI.Desktop
                 }
             }
             else
-                this.dgvPermisos.Visible = false;*/
+                this.dgvPermisos.Visible = false;
         }
     }
 }

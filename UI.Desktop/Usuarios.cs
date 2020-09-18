@@ -15,15 +15,30 @@ namespace UI.Desktop
 {
     public partial class Usuarios : ApplicationForm
     {
-        public Usuarios()
+        private Usuario usuarioActual;
+
+        public Usuario UsuarioActual
         {
+            get { return usuarioActual; }
+            set { usuarioActual = value; }
+        }
+        public Usuarios(Usuario us)
+        {
+            UsuarioActual = us;
             InitializeComponent();
             this.dgvUsuarios.AutoGenerateColumns = false;
         }
         public void Listar()
         {
-            UsuarioLogic ul = new UsuarioLogic();
-            this.dgvUsuarios.DataSource = ul.GetAll();
+            try
+            {
+                UsuarioLogic ul = new UsuarioLogic();
+                this.dgvUsuarios.DataSource = ul.GetAll();
+            }
+            catch (Exception ex)
+            {
+                this.Notificar("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Usuarios_Load(object sender, EventArgs e)
@@ -52,7 +67,7 @@ namespace UI.Desktop
         {
             if (this.dgvUsuarios.SelectedRows.Count > 0)
             {
-                int ID = ((Business.Entities.Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
+                int ID = ((Usuario)this.dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
                 UsuarioDesktop formUsuario = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion);
                 formUsuario.ShowDialog();
                 this.Listar();
