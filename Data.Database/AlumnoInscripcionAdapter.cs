@@ -17,8 +17,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones a INNER JOIN personas p on a.id_alumno=p.id_persona"
-                    + "INNER JOIN curso c on c.id_curso=a.id_curso INNER JOIN planes pl on pl.id_plan=p.id_plan", sqlConn);
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones a INNER JOIN personas p on a.id_alumno=p.id_persona "
+                    + "INNER JOIN cursos c on c.id_curso=a.id_curso INNER JOIN planes pl on pl.id_plan=p.id_plan where tipo_persona=2", sqlConn);
                 SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
 
                 while (drInscripciones.Read())

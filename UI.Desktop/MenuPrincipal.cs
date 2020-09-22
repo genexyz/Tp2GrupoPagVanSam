@@ -100,7 +100,8 @@ namespace UI.Desktop
                 }
                 else if (UsuarioActual.Persona.TipoPersona == "Docente")
                 {
-                    //btnRegistrarNotas.Visible = true;
+                    btnRegistrarNotas.Visible = true;
+                    lblRegistrarNotas.Visible = true;
                     registrarNotasToolStripMenuItem.Visible = true;
                 }
                 else if (UsuarioActual.Persona.TipoPersona == "No docente")
@@ -201,7 +202,7 @@ namespace UI.Desktop
             materias.ShowDialog();
         }
 
-        private void ctnCursos_Click(object sender, EventArgs e)
+        private void btnCursos_Click(object sender, EventArgs e)
         {
             Cursos curso = new Cursos(UsuarioActual);
             curso.ShowDialog();
@@ -219,6 +220,12 @@ namespace UI.Desktop
             alumnoInscripcion.ShowDialog();
         }
 
+        private void btnRegistrarNotas_Click(object sender, EventArgs e)
+        {
+            RegistroNotas registroNotas = new RegistroNotas(usuarioActual);
+            registroNotas.ShowDialog();
+        }
+
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -227,6 +234,7 @@ namespace UI.Desktop
             {
                 this.usuarioActual = login.UsuarioActual;
                 this.Visible = true;
+                ChequearPermisos();
             }
             else
             {
@@ -238,5 +246,7 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        
     }
 }

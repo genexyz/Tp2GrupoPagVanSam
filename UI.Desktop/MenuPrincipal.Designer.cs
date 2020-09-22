@@ -124,7 +124,7 @@
             this.lblEspecialidades.BackColor = System.Drawing.Color.Transparent;
             this.lblEspecialidades.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEspecialidades.ForeColor = System.Drawing.Color.White;
-            this.lblEspecialidades.Location = new System.Drawing.Point(20, 320);
+            this.lblEspecialidades.Location = new System.Drawing.Point(19, 320);
             this.lblEspecialidades.Name = "lblEspecialidades";
             this.lblEspecialidades.Size = new System.Drawing.Size(225, 26);
             this.lblEspecialidades.TabIndex = 22;
@@ -158,7 +158,7 @@
             // 
             this.btnComisiones.BackColor = System.Drawing.Color.White;
             this.btnComisiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComisiones.Location = new System.Drawing.Point(267, 74);
+            this.btnComisiones.Location = new System.Drawing.Point(274, 173);
             this.btnComisiones.Name = "btnComisiones";
             this.btnComisiones.Size = new System.Drawing.Size(126, 43);
             this.btnComisiones.TabIndex = 25;
@@ -172,7 +172,7 @@
             this.lblComisiones.BackColor = System.Drawing.Color.Transparent;
             this.lblComisiones.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComisiones.ForeColor = System.Drawing.Color.White;
-            this.lblComisiones.Location = new System.Drawing.Point(262, 45);
+            this.lblComisiones.Location = new System.Drawing.Point(269, 144);
             this.lblComisiones.Name = "lblComisiones";
             this.lblComisiones.Size = new System.Drawing.Size(190, 26);
             this.lblComisiones.TabIndex = 26;
@@ -206,13 +206,13 @@
             // 
             this.btnCursos.BackColor = System.Drawing.Color.White;
             this.btnCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCursos.Location = new System.Drawing.Point(267, 173);
+            this.btnCursos.Location = new System.Drawing.Point(274, 265);
             this.btnCursos.Name = "btnCursos";
             this.btnCursos.Size = new System.Drawing.Size(126, 43);
             this.btnCursos.TabIndex = 29;
             this.btnCursos.Text = "Ingresar";
             this.btnCursos.UseVisualStyleBackColor = false;
-            this.btnCursos.Click += new System.EventHandler(this.ctnCursos_Click);
+            this.btnCursos.Click += new System.EventHandler(this.btnCursos_Click);
             // 
             // lblCursos
             // 
@@ -220,7 +220,7 @@
             this.lblCursos.BackColor = System.Drawing.Color.Transparent;
             this.lblCursos.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCursos.ForeColor = System.Drawing.Color.White;
-            this.lblCursos.Location = new System.Drawing.Point(262, 144);
+            this.lblCursos.Location = new System.Drawing.Point(272, 236);
             this.lblCursos.Name = "lblCursos";
             this.lblCursos.Size = new System.Drawing.Size(145, 26);
             this.lblCursos.TabIndex = 30;
@@ -230,7 +230,7 @@
             // 
             this.btnPersonas.BackColor = System.Drawing.Color.White;
             this.btnPersonas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPersonas.Location = new System.Drawing.Point(267, 265);
+            this.btnPersonas.Location = new System.Drawing.Point(274, 349);
             this.btnPersonas.Name = "btnPersonas";
             this.btnPersonas.Size = new System.Drawing.Size(126, 43);
             this.btnPersonas.TabIndex = 31;
@@ -244,7 +244,7 @@
             this.lblPersonas.BackColor = System.Drawing.Color.Transparent;
             this.lblPersonas.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPersonas.ForeColor = System.Drawing.Color.White;
-            this.lblPersonas.Location = new System.Drawing.Point(262, 236);
+            this.lblPersonas.Location = new System.Drawing.Point(269, 320);
             this.lblPersonas.Name = "lblPersonas";
             this.lblPersonas.Size = new System.Drawing.Size(166, 26);
             this.lblPersonas.TabIndex = 32;
@@ -312,62 +312,71 @@
             this.cursosToolStripMenuItem1,
             this.comisionesToolStripMenuItem});
             this.aBMToolStripMenuItem.Name = "aBMToolStripMenuItem";
-            this.aBMToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.aBMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aBMToolStripMenuItem.Text = "ABM";
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // personasToolStripMenuItem
             // 
             this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
-            this.personasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.personasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.personasToolStripMenuItem.Text = "Personas";
+            this.personasToolStripMenuItem.Click += new System.EventHandler(this.btnPersonas_Click);
             // 
             // planesToolStripMenuItem1
             // 
             this.planesToolStripMenuItem1.Name = "planesToolStripMenuItem1";
-            this.planesToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
+            this.planesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.planesToolStripMenuItem1.Text = "Planes";
+            this.planesToolStripMenuItem1.Click += new System.EventHandler(this.btnPlanes_Click);
             // 
             // materiasToolStripMenuItem
             // 
             this.materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.materiasToolStripMenuItem.Text = "Materias";
+            this.materiasToolStripMenuItem.Click += new System.EventHandler(this.btnMaterias_Click);
             // 
             // especialidadesToolStripMenuItem
             // 
             this.especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
-            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.especialidadesToolStripMenuItem.Text = "Especialidades";
+            this.especialidadesToolStripMenuItem.Click += new System.EventHandler(this.btnEspecialidades_Click);
             // 
             // cursosToolStripMenuItem1
             // 
             this.cursosToolStripMenuItem1.Name = "cursosToolStripMenuItem1";
-            this.cursosToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
+            this.cursosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cursosToolStripMenuItem1.Text = "Cursos";
+            this.cursosToolStripMenuItem1.Click += new System.EventHandler(this.btnCursos_Click);
             // 
             // comisionesToolStripMenuItem
             // 
             this.comisionesToolStripMenuItem.Name = "comisionesToolStripMenuItem";
-            this.comisionesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.comisionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.comisionesToolStripMenuItem.Text = "Comisiones";
+            this.comisionesToolStripMenuItem.Click += new System.EventHandler(this.btnComisiones_Click);
             // 
             // inscripcionACursoToolStripMenuItem
             // 
             this.inscripcionACursoToolStripMenuItem.Name = "inscripcionACursoToolStripMenuItem";
-            this.inscripcionACursoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.inscripcionACursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.inscripcionACursoToolStripMenuItem.Text = "Inscripcion a Curso";
+            this.inscripcionACursoToolStripMenuItem.Click += new System.EventHandler(this.btnInscripciones_Click);
             // 
             // registrarNotasToolStripMenuItem
             // 
             this.registrarNotasToolStripMenuItem.Name = "registrarNotasToolStripMenuItem";
-            this.registrarNotasToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.registrarNotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.registrarNotasToolStripMenuItem.Text = "Registrar Notas";
+            this.registrarNotasToolStripMenuItem.Click += new System.EventHandler(this.btnRegistrarNotas_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -375,7 +384,7 @@
             this.cursosToolStripMenuItem,
             this.planesToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
             // cursosToolStripMenuItem
@@ -394,7 +403,7 @@
             // 
             this.btnInscripciones.BackColor = System.Drawing.Color.White;
             this.btnInscripciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInscripciones.Location = new System.Drawing.Point(267, 349);
+            this.btnInscripciones.Location = new System.Drawing.Point(274, 74);
             this.btnInscripciones.Name = "btnInscripciones";
             this.btnInscripciones.Size = new System.Drawing.Size(126, 43);
             this.btnInscripciones.TabIndex = 34;
@@ -408,7 +417,7 @@
             this.lblInscripcion.BackColor = System.Drawing.Color.Transparent;
             this.lblInscripcion.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInscripcion.ForeColor = System.Drawing.Color.White;
-            this.lblInscripcion.Location = new System.Drawing.Point(262, 320);
+            this.lblInscripcion.Location = new System.Drawing.Point(269, 45);
             this.lblInscripcion.Name = "lblInscripcion";
             this.lblInscripcion.Size = new System.Drawing.Size(148, 26);
             this.lblInscripcion.TabIndex = 35;
@@ -436,6 +445,7 @@
             this.btnRegistrarNotas.TabIndex = 37;
             this.btnRegistrarNotas.Text = "Ingresar";
             this.btnRegistrarNotas.UseVisualStyleBackColor = false;
+            this.btnRegistrarNotas.Click += new System.EventHandler(this.btnRegistrarNotas_Click);
             // 
             // MenuPrincipal
             // 
