@@ -27,6 +27,7 @@
             <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click">Nuevo     |   </asp:LinkButton>
             <asp:LinkButton ID="asignarPermisosLinkButton" runat="server">     Asignar Permisos</asp:LinkButton>
         </asp:Panel>
+    <br />
         <asp:Panel ID="formPanel" Visible="false" runat="server">
             <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado: "></asp:Label>
             <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
@@ -51,23 +52,28 @@
                 Display="Dynamic" ErrorMessage="Las claves deben coincidir" ForeColor="Red">*</asp:CompareValidator>
             <asp:RequiredFieldValidator ID="rfvRepetirClave" runat="server" ControlToValidate="repetirClaveTextBox" Display="Dynamic" 
                 ErrorMessage="El campo Repetir Clave es obligatorio" ForeColor="Red">*</asp:RequiredFieldValidator>--%>
-        </asp:Panel>
-        <br />
-    <asp:Panel ID="gridPermisosPanel" runat="server">
-            <asp:GridView ID="gridViewPermisos" runat="server" AutoGenerateColumns="False">
+            <asp:Panel ID="personasPanel" runat="server" Visible="False">
+                <asp:GridView ID="dgvPersonas" runat="server" 
+            AutoGenerateColumns="False" DataKeyNames="ID" 
+            onselectedindexchanged="dgvPersonas_SelectedIndexChanged">
                 <Columns>
-                <asp:BoundField HeaderText="Modulo" DataField="DescModulo" />
-                <asp:BoundField HeaderText="Alta" DataField="PermiteAlta" />
-                <asp:BoundField HeaderText="Baja" DataField="PermiteBaja" />
-                <asp:BoundField HeaderText="Modificacion" DataField="PermiteModificacion" />
-                <asp:BoundField HeaderText="Consulta" DataField="PermiteConsulta" />
+                    <asp:BoundField DataField="ID" HeaderText="ID" />
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                    <asp:BoundField DataField="TipoPersona" HeaderText="Tipo Persona" />
+                    <asp:CommandField ShowSelectButton="True" />
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />
                 <HeaderStyle BackColor="#CF7500" BorderColor="Black" Font-Bold="True" ForeColor="White" />
                 <RowStyle BackColor="#F4F4F4" BorderColor="Black" />
                 <SelectedRowStyle BackColor="#F0A500" ForeColor="White" />
             </asp:GridView>
-    </asp:Panel>
+            </asp:Panel>
+            <asp:Panel ID="personasSelecPanel" runat="server" Visible="False">
+        <asp:LinkButton ID="lbSeleccionar" runat="server" onclick="lbSeleccionar_Click">Seleccionar</asp:LinkButton>
+        <asp:LinkButton ID="lbCancelar" runat="server" onclick="lbCancelar_Click">Cancelar</asp:LinkButton>
+            </asp:Panel>
+        </asp:Panel>
     <asp:Panel ID="formActionsPanel" runat="server">
         <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click">Aceptar       </asp:LinkButton>
         <asp:LinkButton ID="cancelarLinkbutton" runat="server" OnClick="cancelarLinkbutton_Click">Cancelar       </asp:LinkButton>

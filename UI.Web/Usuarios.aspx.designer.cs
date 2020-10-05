@@ -177,22 +177,49 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox repetirClaveTextBox;
 
         /// <summary>
-        /// Control gridPermisosPanel.
+        /// Control personasPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gridPermisosPanel;
+        protected global::System.Web.UI.WebControls.Panel personasPanel;
 
         /// <summary>
-        /// Control gridViewPermisos.
+        /// Control dgvPersonas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridViewPermisos;
+        protected global::System.Web.UI.WebControls.GridView dgvPersonas;
+
+        /// <summary>
+        /// Control personasSelecPanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel personasSelecPanel;
+
+        /// <summary>
+        /// Control lbSeleccionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbSeleccionar;
+
+        /// <summary>
+        /// Control lbCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbCancelar;
 
         /// <summary>
         /// Control formActionsPanel.
