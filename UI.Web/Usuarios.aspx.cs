@@ -9,8 +9,14 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Usuarios : System.Web.UI.Page
+    public partial class Usuarios : Modes
     {
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack) LoadGrid();
+
+        }
 
         UsuarioLogic _logic;
         private UsuarioLogic Logic
@@ -34,19 +40,6 @@ namespace UI.Web
                     logic = new PersonaLogic();
                 return logic;
             }
-        }
-
-        public enum FormModes
-        {
-            Alta,
-            Baja,
-            Modificacion
-        }
-
-        public FormModes FormMode
-        {
-            get { return (FormModes)this.ViewState["FormMode"]; }
-            set { this.ViewState["FormMode"] = value; }
         }
 
         private Usuario Entity
@@ -131,11 +124,7 @@ namespace UI.Web
             this.gridView.DataBind();
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack) LoadGrid();
-            
-        }
+       
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {

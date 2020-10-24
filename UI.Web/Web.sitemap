@@ -2,6 +2,13 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="~/Default.aspx" title="Home"  description="Home page">
     <siteMapNode url="~/Usuarios.aspx" title="Usuarios"  description="ABM de Usuarios" />
-    <siteMapNode url="" title=""  description="" />
+    <siteMapNode url="~/Especialidades.aspx" title="Especialidades"  description="ABM Especialidades" />
+	<siteMapNode url="~/Planes.aspx" title="Planes"  description="ABM Planes" />
+	<siteMapNode url="~/Materias.aspx" title="Materias"  description="ABM Materias" />
+	<siteMapNode url="~/Comisiones.aspx" title="Comisiones"  description="ABM Comisiones" />
+	<siteMapNode url="~/Cursos.aspx" title="Cursos"  description="ABM Cursos" />
+	<siteMapNode url="~/Personas.aspx" title="Personas"  description="ABM Personas" />
+	<siteMapNode url="~/RegistroNotas.aspx" title="RegistroNotas"  description="Registro de Notas" />
+	<siteMapNode url="~/Inscripciones.aspx" title="Inscripciones"  description="Inscripciones" />
   </siteMapNode>
 </siteMap>
