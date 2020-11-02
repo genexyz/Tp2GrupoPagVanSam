@@ -106,7 +106,8 @@ namespace UI.Desktop
                 }
                 else if (UsuarioActual.Persona.TipoPersona == "No docente")
                 {
-                    //btnReportes.Visible = true;
+                    btnReportesPlanes.Visible = true;
+                    btnReportesCursos.Visible = true;
                     reportesToolStripMenuItem.Visible = true;
                 }
 
@@ -247,6 +248,16 @@ namespace UI.Desktop
             this.Close();
         }
 
-        
+        private void btnReportesCursos_Click(object sender, EventArgs e)
+        {
+            //ReporteCursosViewer repCursos = new ReporteCursosViewer();
+            //repCursos.ShowDialog();
+        }
+
+        private void btnReportesPlanes_Click(object sender, EventArgs e)
+        {
+            ReportePlanesViewer repPlanes = new ReportePlanesViewer();
+            repPlanes.ShowDialog();
+        }
     }
 }

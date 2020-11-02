@@ -13,10 +13,9 @@
                 <asp:BoundField DataField="DescMateria" HeaderText="Materia" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
-            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
-                Font-Bold="True" ForeColor="White" />
-            <RowStyle BackColor="White" BorderColor="Black" />
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#CF7500" BorderColor="Black" Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="#F4F4F4" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#F0A500" ForeColor="White" />
         </asp:GridView>
     </asp:Panel>
     <br />
@@ -33,10 +32,9 @@
                 <asp:BoundField DataField="Condicion" HeaderText="Condicion" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
-            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
-                Font-Bold="True" ForeColor="White" />
-            <RowStyle BackColor="White" BorderColor="Black" />
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+            <HeaderStyle BackColor="#CF7500" BorderColor="Black" Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="#F4F4F4" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#F0A500" ForeColor="White" />
         </asp:GridView>
         <br />
             <asp:Label ID="lblNota" runat="server">Nota:</asp:Label>

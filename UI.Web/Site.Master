@@ -34,8 +34,8 @@
                                 }
                                 else if (UsuarioActual.Persona.TipoPersona == "No docente")
                                 {
-                                    //Response.Write("<li><a href='ReporteCursosViewer.aspx'>Reporte Cursos</a></li>");
-                                    //Response.Write("<li><a href='ReportePlanesViewer.aspx'>Reporte Planes</a></li>");
+                                    Response.Write("<li><a href='ReporteCursosViewer.aspx'>Reporte Cursos</a></li>");
+                                    Response.Write("<li><a href='ReportePlanesViewer.aspx'>Reporte Planes</a></li>");
                                 }
 
                                 foreach (Business.Entities.ModuloUsuario mu in UsuarioActual.ModulosUsuarios)

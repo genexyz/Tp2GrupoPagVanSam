@@ -10,10 +10,9 @@
                 <asp:BoundField DataField="Cargo" HeaderText="Cargo" />
                 <asp:CommandField ShowSelectButton="True" />
             </Columns>
-            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
-                Font-Bold="True" ForeColor="White" />
-            <RowStyle BackColor="White" BorderColor="Black" />
-            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
+            <HeaderStyle BackColor="#CF7500" BorderColor="Black" Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="#F4F4F4" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#F0A500" ForeColor="White" />
         </asp:GridView>
             </asp:Panel>
         <asp:Panel ID="gridActionsPanel" runat="server">
@@ -41,10 +40,9 @@
                 <asp:CommandField ShowSelectButton="True" />
                
             </Columns>
-            <HeaderStyle BackColor="#80A493" BorderColor="Black" 
-                Font-Bold="True" ForeColor="White" />
-            <RowStyle BackColor="White" BorderColor="Black" />
-            <SelectedRowStyle BackColor="#80A493" ForeColor="White" />
+            <HeaderStyle BackColor="#CF7500" BorderColor="Black" Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="#F4F4F4" BorderColor="Black" />
+            <SelectedRowStyle BackColor="#F0A500" ForeColor="White" />
         </asp:GridView>
         <br />
                 <asp:Label ID="lblCargo" runat="server" Text="Seleccionar cargo:"></asp:Label>
