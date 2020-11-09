@@ -28,10 +28,6 @@ namespace Data.Database
             sqlConn = null;
         }
 
-        protected SqlDataReader ExecuteReader(String commandText)
-        {
-            throw new Exception("Metodo no implementado");
-        }
     }
 
 }

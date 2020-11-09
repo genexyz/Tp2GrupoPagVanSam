@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     
-    <a href="ReportePlanesViewer.aspx">ReportePlanesViewer.aspx</a><CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" 
+    <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" 
         Height="1202px" ReportSourceID="CrystalReportSource1" ToolbarImagesFolderUrl="" 
         ToolPanelWidth="200px" Width="1104px" />
     <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
