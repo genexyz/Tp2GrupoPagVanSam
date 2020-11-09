@@ -111,6 +111,8 @@ namespace UI.Desktop
                 }
                 else if (UsuarioActual.Persona.TipoPersona == "No docente")
                 {
+                    lblReportesCursos.Visible =
+                    lblReportesPlanes.Visible =
                     btnReportesPlanes.Visible = true;
                     btnReportesCursos.Visible = true;
                     reportesToolStripMenuItem.Visible = true;
