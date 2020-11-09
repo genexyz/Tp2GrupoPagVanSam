@@ -8,6 +8,7 @@
     <title>Academia</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link href="StyleSheet1.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="bodyForm" runat="server">

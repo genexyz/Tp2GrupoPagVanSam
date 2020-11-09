@@ -93,8 +93,10 @@
     <Content Include="RegistroNotas.aspx" />
     <Content Include="ReporteCursosViewer.aspx" />
     <Content Include="ReportePlanesViewer.aspx" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebUserControl1.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comisiones.aspx.cs">
@@ -205,6 +207,13 @@
     </Compile>
     <Compile Include="Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
