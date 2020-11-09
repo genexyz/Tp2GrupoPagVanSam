@@ -88,6 +88,8 @@ namespace UI.Desktop
                 btnRegistrarNotas.Visible =
                 btnReportesPlanes.Visible = 
                 btnReportesCursos.Visible = 
+                lblReportesCursos.Visible =
+                lblReportesPlanes.Visible =
                 reportesToolStripMenuItem.Visible = 
                 btnUsuarios.Visible = false;
 
