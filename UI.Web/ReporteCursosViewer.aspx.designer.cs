@@ -11,7 +11,7 @@ namespace UI.Web
 {
 
 
-    public partial class ReportePlanesViewer
+    public partial class ReporteCursosViewer
     {
 
         /// <summary>
@@ -24,12 +24,12 @@ namespace UI.Web
         protected global::CrystalDecisions.Web.CrystalReportViewer CrystalReportViewer1;
 
         /// <summary>
-        /// Control CrystalReportSource1.
+        /// Control ReporteCursos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportSource CrystalReportSource1;
+        protected global::CrystalDecisions.Web.CrystalReportSource ReporteCursos;
     }
 }

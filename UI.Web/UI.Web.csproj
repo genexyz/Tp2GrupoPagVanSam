@@ -91,6 +91,7 @@
     <Content Include="Personas.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="RegistroNotas.aspx" />
+    <Content Include="ReporteCursosViewer.aspx" />
     <Content Include="ReportePlanesViewer.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
@@ -176,6 +177,13 @@
     </Compile>
     <Compile Include="RegistroNotas.aspx.designer.cs">
       <DependentUpon>RegistroNotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteCursosViewer.aspx.cs">
+      <DependentUpon>ReporteCursosViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteCursosViewer.aspx.designer.cs">
+      <DependentUpon>ReporteCursosViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportePlanesViewer.aspx.cs">
       <DependentUpon>ReportePlanesViewer.aspx</DependentUpon>

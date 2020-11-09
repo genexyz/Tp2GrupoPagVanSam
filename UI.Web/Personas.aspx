@@ -84,7 +84,7 @@
                 <asp:DropDownList ID="ddlTipoPersona" runat="server" Width="150px">
                     <asp:ListItem>Alumno</asp:ListItem>
                     <asp:ListItem>Docente</asp:ListItem>
-                    <asp:ListItem>No Docente</asp:ListItem>
+                    <asp:ListItem Value="No docente">No Docente</asp:ListItem>
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
                     ControlToValidate="ddlTipoPersona" 

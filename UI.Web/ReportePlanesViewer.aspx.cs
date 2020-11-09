@@ -12,8 +12,9 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*CrystalReportViewer1.ReportSource = CRSource;
-            CrystalReportViewer1.RefreshReport();*/
+            /*CrystalDecisions.CrystalReports.Engine.ReportDocument rd = new Util.ReportePlanes();
+            this.CrystalReportViewer1.ReportSource = rd;
+            this.CrystalReportViewer1.DataBind();*/
         }
     }
 }

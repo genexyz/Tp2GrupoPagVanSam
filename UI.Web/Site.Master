@@ -11,8 +11,6 @@
 </head>
 <body>
     <form id="bodyForm" runat="server">
-        <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource"></asp:Menu>
-        <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
         <div class="HeaderTitle" runat="server">
            <% if (Session["UsuarioActual"] != null) { %>
               <asp:LinkButton ID="lbCerrarSesion" runat="server" onclick="lbCerrarSesion_Click">Cerrar Sesion</asp:LinkButton>

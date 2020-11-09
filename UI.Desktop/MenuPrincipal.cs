@@ -86,6 +86,9 @@ namespace UI.Desktop
                 btnPersonas.Visible =
                 btnPlanes.Visible =
                 btnRegistrarNotas.Visible =
+                btnReportesPlanes.Visible = 
+                btnReportesCursos.Visible = 
+                reportesToolStripMenuItem.Visible = 
                 btnUsuarios.Visible = false;
 
                 ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
@@ -250,8 +253,8 @@ namespace UI.Desktop
 
         private void btnReportesCursos_Click(object sender, EventArgs e)
         {
-            //ReporteCursosViewer repCursos = new ReporteCursosViewer();
-            //repCursos.ShowDialog();
+            ReporteCursosViewer repCursos = new ReporteCursosViewer();
+            repCursos.ShowDialog();
         }
 
         private void btnReportesPlanes_Click(object sender, EventArgs e)
